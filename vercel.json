@@ -1,6 +1,6 @@
 {
     "images": {
-        "sizes": [256, 656, 1080, 2048, 3840],
+        "sizes": "**",
         "remotePatterns": [
             {
                 "protocol": "https",
