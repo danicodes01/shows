@@ -28,21 +28,22 @@ git clone https://github.com/YOUR_USERNAME/shows.git
 cd shows
 
 # 2. Add upstream remote (main repo)
-git remote add upstream https://github.com/danicodes01/shows.git
+git remote add upstream git@github.com:distort-apps/DistortNewYork.git
 
 # 3. Verify remotes
 git remote -v
-# origin    https://github.com/YOUR_USERNAME/shows.git
-# upstream  https://github.com/danicodes01/shows.git
+# origin    git@github.com:YOUR_USERNAME/shows.git
+# upstream  git@github.com:distort-apps/DistortNewYork.git
 
 # 4. Install dependencies
 npm install
 
-# 5. Pull environment variables from Vercel
-vercel link   # link to the project (first time only)
-vercel env pull .env.local
+# 5. Set up environment variables
+# Copy DATABASE_URL and DATABASE_URL_UNPOOLED from Neon console (console.neon.tech)
+# Copy ANTHROPIC_API_KEY, INGEST_SECRET, BLOB_READ_WRITE_TOKEN from the team
+# Create .env.local with all of these
 
-# 6. Apply any pending migrations to your local/preview database
+# 6. Apply any pending migrations
 npx prisma migrate dev
 
 # 7. Start the dev server
@@ -66,7 +67,8 @@ npx prisma migrate dev
 
 ```bash
 # Always branch from main
-git checkout -b dan/your-feature-name
+# Naming: dev/feature-name, docs/what-changed, fix/bug-description
+git checkout -b dev/your-feature-name
 ```
 
 ### 3. Make your changes
@@ -91,7 +93,7 @@ npm run dev
 # Sync with latest main
 git checkout main
 git pull upstream main
-git checkout dan/your-feature-name
+git checkout dev/your-feature-name
 git merge main
 
 # Re-apply migrations in case main had schema changes
@@ -104,24 +106,23 @@ npm install
 npm run build
 
 # If build passes, push to your fork
-git push origin dan/your-feature-name
+git push origin dev/your-feature-name
 ```
 
 ### 5. Create a pull request
 
 Push will print a GitHub URL — click it to open the PR.
 
-- Set base branch to `main` on the upstream repo
+- Set base branch to `main` on the upstream repo (`distort-apps/DistortNewYork`)
 - Describe what changed and why
 - Note if the PR includes a database migration
-- Do not merge your own PR
 
 ### 6. After your PR is merged
 
 ```bash
 git checkout main
 git pull upstream main
-git branch -d dan/your-feature-name
+git branch -d dev/your-feature-name
 npm install
 npx prisma migrate dev
 ```
@@ -132,11 +133,15 @@ npx prisma migrate dev
 
 ### Environments
 
+**All environments share a single Neon database.** The Neon Vercel integration was removed (plan only allowed 1 branch). `DATABASE_URL` is set manually in Vercel for all environments.
+
 | Environment | Database | How it's set |
 |---|---|---|
-| Production | Neon `main` branch | Auto by Vercel |
-| Preview | Neon branch per deployment | Auto by Vercel + Neon |
-| Development | Preview DB (via `.env.local`) | `vercel env pull .env.local` |
+| Production | Neon — single shared DB | Manually in Vercel env vars |
+| Preview | Neon — same shared DB | Manually in Vercel env vars |
+| Development | Neon — same shared DB | `.env.local` |
+
+> ⚠️ No database isolation between environments. Scraper runs, migrations, and preview deployment writes all hit the same database. Be careful running scrapers — they write to live data.
 
 ### Key rules
 
@@ -175,13 +180,14 @@ npx prisma studio                   # Open database GUI in browser
 
 | Branch | Vercel environment | Database |
 |---|---|---|
-| `main` | Production | Neon main branch |
-| Any other branch | Preview | Neon branch (auto-created) |
-| Local | Development | `.env.local` |
+| `main` | Production | Neon — single shared DB |
+| Any other branch | Preview | Neon — same shared DB |
+| Local | Development | Neon — same shared DB |
 
 - Every push to a feature branch triggers a Vercel **preview deployment** automatically
 - Merging to `main` triggers a **production deployment** automatically
 - Production migrations (`prisma migrate deploy`) run as part of the Vercel build
+- All environments share one database — preview deployments are not isolated from production data
 
 ---
 
@@ -286,8 +292,7 @@ Defined in `styles/globals.css`, use these everywhere — never hardcode colors.
 - ✅ Always run `npm run build` before pushing
 - ✅ Commit `prisma/migrations/` whenever you change the schema
 - ✅ Use specific `git add <file>` — avoid `git add .`
-- ✅ Branch naming: `dan/feature-name`
+- ✅ Branch naming: `dev/feature`, `docs/what-changed`, `fix/bug`
 - ❌ Never push directly to `main`
-- ❌ Never merge your own PR
 - ❌ Never run `migrate dev` against production
 - ❌ Never hardcode colors — use CSS variables
