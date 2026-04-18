@@ -11,7 +11,6 @@
   font: inherit;
   border-radius: 6px;
   padding: 0.5rem 1rem;
-<<<<<<< HEAD
   background-color: var(--color-bg-elevated);
   color: var(--color-text);
   border: 1px solid var(--color-separator);
@@ -90,15 +89,3 @@
 .list address {
   display: inline;
 }
-=======
-  background-color: var(--color-grey-50);
-  color:rgba(32, 33, 36, 1.00);
-  border: 1px solid rgba(32, 33, 36, 1.00);
-  cursor: pointer;
-}
-
-.comments button:hover,
-.comments button:active {
-  opacity: 75%;
-}
->>>>>>> upstream/main
