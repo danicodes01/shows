@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Contact" ADD COLUMN     "venue" TEXT NOT NULL DEFAULT '',
+ALTER COLUMN "email" SET DEFAULT '',
+ALTER COLUMN "title" SET DEFAULT '',
+ALTER COLUMN "date" SET DEFAULT '';

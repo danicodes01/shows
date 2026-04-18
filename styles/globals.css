@@ -1,73 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto&family=Source+Sans+Pro:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Sacramento:400');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Ubuntu:wght@300;400&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  --color-grey-50: hsl(265, 55%, 96%);
-  --color-grey-100: hsl(265, 19%, 88%);
-  --color-grey-200: hsl(265, 7%, 70%);
-  --color-grey-300: hsl(265, 6%, 66%);
-  --color-grey-400: hsl(265, 4%, 57%);
-  --color-grey-500: hsl(265, 3%, 53%);
-  --color-grey-600: hsl(265, 4%, 42%);
-  --color-grey-700: hsl(265, 4%, 31%);
-  --color-grey-800: hsl(276, 5%, 20%);
-  --color-grey-900: hsl(280, 5%, 13%); 
+:root {
+  /* Apple Dark Mode — Backgrounds */
+  --color-bg: #000000;
+  --color-bg-elevated: #1C1C1E;
+  --color-bg-elevated-2: #2C2C2E;
 
-  --color-primary-50: rgba(227, 227, 227, 1.00);
-  --color-primary-100: #a07aaa;
-  --color-primary-200: #884c97;
-  --color-primary-300: #843897;
-  --color-primary-400: #732392;
-  --color-primary-500: #5a097a;
-  --color-primary-600: #480264;
-  --color-primary-700: #3d0264;
+  /* Apple Dark Mode — Text */
+  --color-text: rgba(227, 227, 227, 1);
+  --color-text-secondary: rgba(235, 235, 245, 0.6);
+  --color-text-tertiary: rgba(235, 235, 245, 0.3);
 
-  --color-success-100: #a2f0bc;
-  --color-success-500: #12bd4b;
+  /* Apple Dark Mode — Accent (systemPurple) */
+  --color-accent: #BF5AF2;
 
-  --color-error-100: #f1acc9;
-  --color-error-500: #a10c4a;
+  /* Apple Dark Mode — Feedback */
+  --color-success: #30D158;
+  --color-error: #FF453A;
 
-  --color-neon: #ff6ec7;
+  /* Apple Dark Mode — Structural */
+  --color-separator: #38383A;
+  --color-fill: rgba(120, 120, 128, 0.36);
 
+  /* Form inputs (light surface treatment) */
+  --color-input-bg: #ffffff;
+  --color-input-text: rgba(32, 33, 36, 1);
+  --color-input-border: #cccccc;
+  --color-input-border-focus: #aaaaaa;
+  --color-input-placeholder: #555555;
+
+  /* Dark buttons */
+  --color-btn-dark: rgba(32, 33, 36, 1);
+  --color-btn-dark-hover: #343333;
+  --color-btn-dark-disabled: #757575;
+  --color-btn-black: #252525;
+  --color-btn-black-hover: #000000;
+  --color-btn-black-hover-text: #888888;
+
+  /* Spacing scale */
   --size-1: 0.25rem;
   --size-2: 0.5rem;
   --size-3: 0.75rem;
   --size-4: 1rem;
   --size-5: 1.25rem;
   --size-6: 1.5rem;
-  --size-7: 1.75rem;
   --size-8: 2rem;
-  --size-9: 2.25rem;
-  --size-10: 2.5rem;
-  --size-11: 2.75rem;
-  --size-12: 3rem;
-  --size-13: 3.25rem;
-  --size-14: 3.5rem;
   --size-16: 4rem;
   --size-20: 5rem;
   --size-40: 10rem;
+}
 
+body {
   margin: 0;
-  background-color: black;
-  color: rgba(227, 227, 227, 1.00);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: 'Roboto', sans-serif;
-  text-transform: uppercase;
 }
 
 h1,
 h2,
 h3 {
   font-family: 'Oswald', 'Roboto', sans-serif;
-}
-
-label {
-  text-transform: lowercase;
 }
 
 a {
@@ -83,9 +80,3 @@ button {
   margin: auto;
   text-align: center;
 }
-
-.contact-background {
-  background-color: var(--color-grey-500);
-}
-
-

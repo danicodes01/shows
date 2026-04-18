@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ContactStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Venue {
+  id           String  @id @default(cuid())
+  name         String
+  slug         String  @unique
+  address      String?
+  neighborhood String?
+  website      String?
+  shows        Show[]
+}
+
+model Show {
+  id         String    @id @default(cuid())
+  slug       String    @unique
+  title      String
+  date       DateTime
+  genre      String
+  venueId    String
+  venue      Venue     @relation(fields: [venueId], references: [id])
+  time       String
+  price      String
+  image      String
+  excerpt    String    @default("")
+  rating     Int       @default(0)
+  isFeatured Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  comments   Comment[]
+
+  @@index([date])
+  @@index([isFeatured])
+  @@index([venueId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  showId    String
+  show      Show     @relation(fields: [showId], references: [id], onDelete: Cascade)
+  email     String    @default("")
+  name      String
+  text      String
+  createdAt DateTime @default(now())
+
+  @@index([showId])
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model Contact {
+  id        String        @id @default(cuid())
+  email     String        @default("")
+  title     String        @default("")
+  date      String        @default("")
+  venue     String        @default("")
+  genre     String        @default("")
+  time      String        @default("")
+  price     String        @default("")
+  excerpt   String        @default("")
+  imageUrl  String        @default("")
+  status    ContactStatus @default(PENDING)
+  createdAt DateTime      @default(now())
+}

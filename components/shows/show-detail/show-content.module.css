@@ -1,79 +1,57 @@
 
 .content {
-    width: 95%;
-    max-width: 60rem;
-    margin: var(--size-8) auto;
-    font-size: var(--size-5);
-    line-height: var(--size-8);
-    background-color:  rgba(32, 33, 36, 1.00); 
-    border-radius: 2rem; border: 0.2rem solid var(--color-grey-50);
-    padding: 0.4em;
-    box-shadow: 0 0 .2rem var(--color-grey-50),
-                0 0 .2rem var(--color-grey-50),
-                0 0 2rem #ff6ec7,
-                0 0 0.8rem #ff6ec7,
-                0 0 2.8rem #ff6ec7,
-                inset 0 0 1.3rem #ff6ec7;
-    padding: var(--size-4);
-    animation: pulsate 1.5s infinite alternate;
+  width: 95%;
+  max-width: 60rem;
+  margin: var(--size-8) auto;
+  font-size: var(--size-5);
+  line-height: var(--size-8);
+  background-color: var(--color-bg-elevated);
+  border-radius: 6px;
+  padding: var(--size-4);
+}
+
+.header {
+  padding-bottom: var(--size-8);
+  border-bottom: 8px solid var(--color-accent);
+  margin-bottom: var(--size-4);
+}
+
+.header h1 {
+  font-size: var(--size-8);
+  color: var(--color-accent);
+  margin: 0;
+  line-height: initial;
+  text-align: center;
+}
+
+.image {
+  margin: var(--size-4) auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.image img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.details {
+  text-align: center;
+}
+
+.details p {
+  color: var(--color-text-secondary);
+  margin: var(--size-2) 0;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: var(--size-8);
   }
-  
-  .wrapper {
-    margin-top: 2.3rem; 
+
+  .header h1 {
+    font-size: var(--size-16);
+    text-align: left;
   }
-  .content p, .content time {
-    color: var(--color-grey-50);
-  }
-  
-  .content .image {
-    margin: var(--size-4) auto;
-    width: 100%;
-    max-width: 600px;
-  }
-  
-  @media (min-width: 768px) {
-    .content {
-      padding: var(--size-8);
-    }
-  }
-  @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 47%, 49%, 51%, 53%, 75%, 77%, 79%, 81%, 95%, 97%, 100% {
-      text-shadow: none;
-    }
-    20%, 22%, 24%, 48%, 50%, 52%, 54%, 76%, 78%, 80%, 96% {
-      box-shadow:
-        0 0 4px var(--color-grey-50),
-        0 0 11px var(--color-grey-50),
-        0 0 19px var(--color-grey-50),
-        0 0 40px #ff6ec7,
-        0 0 80px #ff6ec7,
-        0 0 90px #ff6ec7,
-        0 0 100px #ff6ec7,
-        0 0 150px #ff6ec7;
-    }
-  }
-  
-  @keyframes pulsate {
-    0%, 100% {
-      box-shadow:
-        0 0 2px var(--color-grey-50),
-        0 0 4px var(--color-grey-50),
-        0 0 6px var(--color-grey-50),
-        0 0 8px #ff6ec7,
-        0 0 16px #ff6ec7,
-        0 0 24px #ff6ec7,
-        0 0 32px #ff6ec7,
-        0 0 40px #ff6ec7;
-    }
-    50% {
-      box-shadow:
-        0 0 3px var(--color-grey-50),
-        0 0 6px var(--color-grey-50),
-        0 0 9px var(--color-grey-50),
-        0 0 12px #ff6ec7,
-        0 0 24px #ff6ec7,
-        0 0 36px #ff6ec7,
-        0 0 48px #ff6ec7,
-        0 0 60px #ff6ec7;
-    }
-  }
+}

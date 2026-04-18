@@ -1,52 +1,69 @@
 .newsletter {
-    margin: 1rem auto;
-    width: 90%;
-    max-width: 20rem;
-  }
-  
-  .newsletter h2 {
-    text-align: center;
-  }
-  
-  .control input {
-    font: inherit;
-    padding: 0.25rem;
-    border-radius: 4px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border: 1px solid #ccc;
-  }
-  
-  .newsletter button {
-    background-color: #252525;
-    border: 1px solid #252525;
-    border-radius: 6px;
-    color: var(--color-grey-50);
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    font: inherit;
-    cursor: pointer;
-  }
-  
-  .newsletter button:hover,
-  .newsletter button:active {
-    background-color: #000000;
-    border-color: #000000;
-    color:grey;
-  }
-  
-  .newsletter button:disabled {
-    background-color: #000000; 
-    border-color: #000000;
-    cursor: not-allowed;
-    color: grey; 
-  }
+  margin-block: var(--size-2);
+  margin-inline: auto;
+  width: 90%;
+  max-width: 22rem;
+}
 
-  .control {
-    display: flex;
-  }
-  
-  .control input {
-    flex: 1;
-  }
-  
+.newsletter h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-block: var(--size-2);
+}
+
+.control {
+  display: flex;
+}
+
+.control input {
+  flex: 1;
+  font: inherit;
+  padding-block: var(--size-2);
+  padding-inline: var(--size-2);
+  border-radius: 4px;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  border: 1px solid var(--color-input-border);
+  background-color: var(--color-input-bg);
+  color: var(--color-input-text);
+}
+
+.control input::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+.control input:focus {
+  outline: none;
+  border-color: var(--color-input-border-focus);
+}
+
+.controlDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.newsletter button {
+  padding-block: var(--size-2);
+  padding-inline: var(--size-3);
+  background-color: var(--color-btn-black);
+  border: 1px solid var(--color-btn-black);
+  border-radius: 4px;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.newsletter button:hover,
+.newsletter button:active {
+  background-color: var(--color-btn-black-hover);
+  border-color: var(--color-btn-black-hover);
+  color: var(--color-btn-black-hover-text);
+}
+
+.newsletter button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

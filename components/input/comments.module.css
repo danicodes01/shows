@@ -7,17 +7,85 @@
 
 }
 
-.comments button {
+.comments > button {
   font: inherit;
   border-radius: 6px;
   padding: 0.5rem 1rem;
-  background-color: var(--color-grey-50);
-  color:rgba(32, 33, 36, 1.00);
-  border: 1px solid rgba(32, 33, 36, 1.00);
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text);
+  border: 1px solid var(--color-separator);
   cursor: pointer;
 }
 
-.comments button:hover,
-.comments button:active {
-  opacity: 75%;
+.comments > button:hover,
+.comments > button:active {
+  background-color: var(--color-fill);
+}
+
+.form {
+  margin: 2rem auto;
+  width: 100%;
+  border-radius: 6px;
+  background-color: var(--color-bg-elevated);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  text-align: left;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control {
+  margin-bottom: 0.5rem;
+  flex: 1;
+  min-width: 10rem;
+}
+
+.control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.control input,
+.control textarea {
+  font: inherit;
+  padding: 0.25rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-separator);
+  width: 100%;
+  background-color: var(--color-bg-elevated-2);
+  color: var(--color-text);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.list li {
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--color-separator);
+}
+
+.list p {
+  margin: 0;
+}
+
+.list div {
+  text-align: right;
+  font-style: italic;
+}
+
+.list address {
+  display: inline;
 }

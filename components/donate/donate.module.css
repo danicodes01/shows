@@ -1,45 +1,31 @@
 .donate {
-  margin: 1rem auto;
+  margin-block: var(--size-4);
+  margin-inline: auto;
   width: 90%;
-  max-width: 20rem;
+  max-width: 24rem;
   text-align: center;
 }
 
 .donate h2 {
-  text-align: center;
-}
-
-.controls {
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-}
-
-.control {
-  flex: 1;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: var(--size-6);
+  color: var(--color-text);
 }
 
 .donate a {
-  color: var(--color-grey-500);
+  display: block;
+  color: var(--color-text-secondary);
   font-size: var(--size-4);
+  margin-block: var(--size-2);
+  word-break: break-all;
 }
 
 .donate a:hover,
-.donate a:active,
-.donate a.active {
-  opacity: 60%;
+.donate a:active {
+  opacity: 0.6;
 }
 
-@media (min-width: 768px) {
-
-    .donate a {
-      width: 20%;
-    }
-  }
-
-
+.donate hr {
+  border-color: var(--color-separator);
+  margin-block: var(--size-4);
+}

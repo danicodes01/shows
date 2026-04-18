@@ -1,70 +1,63 @@
-
 .contact {
-  margin: 1rem auto;
+  margin-block: var(--size-4);
+  margin-inline: auto;
   width: 90%;
-  max-width: 20rem;
+  max-width: 24rem;
   text-align: center;
-}
-
-.form {
-  margin: 2rem auto;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  background-color: white;
-  border-radius: 6px;
-  width: 100%;
-  max-width: 40rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 .contact h2 {
-  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--size-6);
+  color: var(--color-text);
+}
+
+.contact > p {
+  text-transform: uppercase;
+  font-size: var(--size-4);
+  color: var(--color-text-secondary);
+}
+
+.form {
+  margin-block: var(--size-6);
+  padding: var(--size-4);
+  background-color: var(--color-input-bg);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+  text-align: left;
 }
 
 .controls {
-  width: 100%;
   display: flex;
-  gap: 1rem;
   flex-direction: column;
-}
-
-.contact button {
-  background-color: rgba(32, 33, 36, 1.00);;
-  border: 1px solid rgba(32, 33, 36, 1.00);;
-  border-radius: 6px;
-  color: var(--color-grey-50);
-  font: inherit;
-  cursor: pointer;
-}
-
-.contact button:hover,
-.contact button:active {
-  background-color: #343333;
-  border-color: #343333;
-}
-
-.contact button:disabled {
-  background-color: #757575; 
-  border-color: #757575;
-  color: #d0d0d0; 
-  cursor: not-allowed;
+  gap: var(--size-3);
 }
 
 .control {
-  flex: 1;
   display: flex;
-  gap: 1rem;
+  gap: var(--size-4);
   align-items: center;
   justify-content: space-between;
 }
 
-.contact input,
-.contact textarea {
+.form label {
+  color: var(--color-input-text);
+  font-size: var(--size-4);
+  min-width: 4rem;
+}
+
+.control input,
+.control textarea {
   flex: 1;
-  font-size: 16px;
+  font: inherit;
+  font-size: var(--size-4);
+  padding: var(--size-1) var(--size-2);
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+  color: var(--color-input-text);
+  background-color: var(--color-input-bg);
 }
 
 .fileInput {
@@ -79,30 +72,36 @@
 .fileInputLabel {
   display: block;
   cursor: pointer;
-  background-color: white;
-  border: 1px solid rgba(32, 33, 36, 1.00);
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-text);
   border-radius: 6px;
-  color: rgba(32, 33, 36, 1.00);
-  padding: 0.5rem 1.5rem;
+  color: var(--color-input-text);
+  padding: var(--size-2) var(--size-4);
   text-align: center;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
   width: 100%;
-  line-height: normal;
+  font-size: var(--size-4);
 }
 
-.form Button {
-  padding: 0.5rem 1.5cqh;
-}
-
-.form label {
-  color: rgba(32, 33, 36, 1.00);
-}
-
-.dateInput {
+.contact button[type='submit'] {
   width: 100%;
-  border: 1px solid #ccc;
-  padding: 8px;
-  border-radius: 4px;
+  padding-block: var(--size-2);
+  background-color: var(--color-btn-dark);
+  border: 1px solid var(--color-btn-dark);
+  border-radius: 6px;
+  color: var(--color-input-bg);
+  font: inherit;
+  font-size: var(--size-4);
+  cursor: pointer;
+}
 
+.contact button[type='submit']:hover,
+.contact button[type='submit']:active {
+  background-color: var(--color-btn-dark-hover);
+  border-color: var(--color-btn-dark-hover);
+}
+
+.contact button[type='submit']:disabled {
+  background-color: var(--color-btn-dark-disabled);
+  border-color: var(--color-btn-dark-disabled);
+  cursor: not-allowed;
 }

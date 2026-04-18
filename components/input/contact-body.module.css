@@ -1,18 +1,36 @@
 .contact {
-    margin: 3rem auto;
-    width: 90%;
-    max-width: 20rem;
-    text-align: center;
-  }
-  
-  .contact a {
-    color: var(--color-grey-500);
-    font-size: var(--size-4);
-  }
-  
-  .contact a:hover,
-  .contact a:active,
-  .contact a.active {
-    opacity: 60%;
-  }
-  
+  margin-block: var(--size-4);
+  margin-inline: auto;
+  width: 90%;
+  max-width: 24rem;
+  text-align: center;
+}
+
+.contact h2 {
+  text-transform: uppercase;
+  font-size: var(--size-5);
+  color: var(--color-text);
+}
+
+.contact p {
+  text-transform: uppercase;
+  font-size: var(--size-4);
+  color: var(--color-text-secondary);
+}
+
+.contact a {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: var(--size-4);
+  word-break: break-all;
+}
+
+.contact a:hover,
+.contact a:active {
+  opacity: 0.6;
+}
+
+.contact hr {
+  border-color: var(--color-separator);
+  margin-block: var(--size-4);
+}
