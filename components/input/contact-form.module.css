@@ -1,71 +1,63 @@
 .contact {
-  margin: 1rem auto;
+  margin-block: var(--size-4);
+  margin-inline: auto;
   width: 90%;
-  max-width: 20rem;
+  max-width: 24rem;
   text-align: center;
-}
-
-.form {
-  margin: 2rem auto;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  padding: 1rem;
-  background-color: white;
-  border-radius: 6px;
-  width: 90%;
-  max-width: 40rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 .contact h2 {
-  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--size-6);
+  color: var(--color-text);
+}
+
+.contact > p {
+  text-transform: uppercase;
+  font-size: var(--size-4);
+  color: var(--color-text-secondary);
+}
+
+.form {
+  margin-block: var(--size-6);
+  padding: var(--size-4);
+  background-color: var(--color-input-bg);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+  text-align: left;
 }
 
 .controls {
-  width: 100%;
   display: flex;
-  gap: 1rem;
   flex-direction: column;
-}
-
-.control input {
-  font: inherit;
-  padding: 0.25rem;
-  border-radius: 4px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border: 1px solid #ccc;
-}
-
-.contact button {
-  background-color: #000000;
-  border: 1px solid #000000;
-  border-radius: 6px;
-  color: whitesmoke;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
-.contact button:hover,
-.contact button:active {
-  background-color: #343333;
-  border-color: #343333;
+  gap: var(--size-3);
 }
 
 .control {
-  flex: 1;
   display: flex;
-  gap: 1rem;
+  gap: var(--size-4);
   align-items: center;
   justify-content: space-between;
 }
 
-.control input {
+.form label {
+  color: var(--color-input-text);
+  font-size: var(--size-4);
+  min-width: 4rem;
+}
+
+.control input,
+.control textarea {
   flex: 1;
+  font: inherit;
+  font-size: var(--size-4);
+  padding: var(--size-1) var(--size-2);
+  border: 1px solid var(--color-input-border);
+  border-radius: 4px;
+  color: var(--color-input-text);
+  background-color: var(--color-input-bg);
 }
 
 .fileInput {
@@ -78,17 +70,38 @@
 }
 
 .fileInputLabel {
-  display: block; /* Keeps the label as a block element */
+  display: block;
   cursor: pointer;
-  background-color: white;
-  border: 1px solid #000000;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-text);
   border-radius: 6px;
-  color: black; /* Adjusted for better visibility */
-  padding: 0.5rem 1.5rem;
-  text-align: center; /* Center the text horizontally */
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  margin: 0 auto; /* Center the label horizontally */
-  width: 75%; /* Width of the label */
-  line-height: normal; /* Adjust line height for vertical centering */
+  color: var(--color-input-text);
+  padding: var(--size-2) var(--size-4);
+  text-align: center;
+  width: 100%;
+  font-size: var(--size-4);
 }
 
+.contact button[type='submit'] {
+  width: 100%;
+  padding-block: var(--size-2);
+  background-color: var(--color-btn-dark);
+  border: 1px solid var(--color-btn-dark);
+  border-radius: 6px;
+  color: var(--color-input-bg);
+  font: inherit;
+  font-size: var(--size-4);
+  cursor: pointer;
+}
+
+.contact button[type='submit']:hover,
+.contact button[type='submit']:active {
+  background-color: var(--color-btn-dark-hover);
+  border-color: var(--color-btn-dark-hover);
+}
+
+.contact button[type='submit']:disabled {
+  background-color: var(--color-btn-dark-disabled);
+  border-color: var(--color-btn-dark-disabled);
+  cursor: not-allowed;
+}

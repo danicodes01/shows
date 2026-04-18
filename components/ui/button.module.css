@@ -2,16 +2,16 @@
   width: 100%;
   font: inherit;
   padding: 0.25rem 0.5rem;
-  background-color: #000000;
-  border: 1px solid #000000;
-  color: ivory; 
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-separator);
+  color: var(--color-text);
   border-radius: 4px;
   text-decoration: none;
 }
 
 .btn:hover,
 .btn:active {
-  background-color: #1d1c1c;
-  border-color: #1d1c1c;
+  background-color: var(--color-bg-elevated-2);
+  border-color: var(--color-separator);
   text-decoration: none;
 }

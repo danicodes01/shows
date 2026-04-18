@@ -1,17 +1,19 @@
 .latest {
-    width: 90%;
-    max-width: 80rem;
-    margin: var(--size-8) auto;
-  }
-  
+  width: 90%;
+  max-width: 80rem;
+  margin-block: var(--size-4);
+  margin-inline: auto;
+}
+
+.latest h2 {
+  font-size: var(--size-4);
+  color: var(--color-text);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
   .latest h2 {
-    font-size: var(--size-8);
-    color: var(--color-grey-800);
-    text-align: center;
+    font-size: var(--size-5);
   }
-  
-  @media (min-width: 768px) {
-    .latest h2 {
-      font-size: var(--size-16);
-    }
-  }
+}

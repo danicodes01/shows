@@ -5,22 +5,36 @@
   "scripts": {
     "dev": "next dev",
     "dev:https": "next dev --experimental-https",
-    "build": "next build",
+    "build": "prisma migrate deploy && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:status": "prisma migrate status",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "scrape:broadway": "ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts",
+    "scrape:broadway:dev": "INGEST_URL=http://localhost:3000/api/shows ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts",
+    "scrape:broadway:prod": "INGEST_URL=https://distortnewyork.com/api/shows ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.478.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/adapter-neon": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^1.1.1",
-    "aws-sdk": "^2.1525.0",
-    "mongodb": "^6.3.0",
-    "multer": "^1.4.5-lts.1",
-    "next-connect": "^1.0.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "swr": "^2.2.4"
+    "@vercel/blob": "^2.3.3",
+    "next": "^16.2.4",
+    "prisma": "^7.7.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
-    "next": "^14.0.4"
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@types/node": "25.6.0",
+    "dotenv": "^17.4.2",
+    "playwright": "^1.59.1",
+    "ts-node": "^10.9.2"
   }
 }

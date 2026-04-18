@@ -27,6 +27,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
 
 # vercel
@@ -43,3 +44,4 @@ node_modules/
 .*.env
 next.config.js
 certificates
+/lib/generated/prisma

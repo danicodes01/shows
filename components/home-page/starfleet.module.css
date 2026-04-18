@@ -1,0 +1,16 @@
+.starfleet {
+  margin-block: var(--size-4);
+  margin-inline: auto;
+  width: 90%;
+  max-width: 20rem;
+  text-align: center;
+}
+
+.starfleet a {
+  color: var(--color-text-secondary);
+}
+
+.starfleet a:hover,
+.starfleet a:active {
+  opacity: 0.6;
+}
