@@ -27,13 +27,13 @@ Playwright scrapers (per venue)
   → Server Components render pages
 ```
 
-Scrapers run weekly via GitHub Actions. The ingestion endpoint upserts shows (slug-based deduplication) and upserts venues.
+Scrapers are run manually from the repo root. The ingestion endpoint upserts shows (slug-based deduplication) and upserts venues.
 
 ### Pages (all Server Components unless noted)
 | Route | Description |
 |---|---|
 | `/` | Featured shows + newsletter signup |
-| `/shows` | All shows + date filter (`?year=&month=`) |
+| `/shows` | All shows + live search (`?q=`) |
 | `/shows/[slug]` | Show detail + comments |
 | `/search` | Search results (`?q=`) |
 | `/venues` | All venues |
@@ -68,11 +68,15 @@ Prisma client is generated to `lib/generated/prisma/` — never edit directly.
 
 ## Environments
 
+**All environments share a single Neon database.** The Neon Vercel integration was removed because the plan only supported 1 branch. `DATABASE_URL` is set manually in Vercel env vars for both Production and Preview.
+
 | Environment | Branch | Database |
 |---|---|---|
-| Production | `main` | Neon main branch |
-| Preview | any feature branch | Neon branch (auto per deployment) |
-| Development | local | `.env.local` |
+| Production | `main` | Neon — single shared DB |
+| Preview | any feature branch | Neon — same shared DB |
+| Development | local | Neon — same shared DB (via `.env.local`) |
+
+> ⚠️ There is no database isolation between environments. Scraper data, migrations, and any writes from preview deployments all affect the same database.
 
 Migration commands:
 - `npx prisma migrate dev --name xyz` — local only
