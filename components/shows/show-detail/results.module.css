@@ -3,4 +3,20 @@
   width: 90%;
   max-width: 40rem;
   text-align: center;
+  text-transform: uppercase;
 }
+
+.title a {
+  background-color: transparent;
+  /* border: 1px solid #252525; */
+  /* border-radius: 6px; */
+  color: var(--color-grey-500);
+  font: inherit;
+  cursor: pointer;
+}
+
+.title a:hover,
+.title a:active {
+opacity: 60%;
+}
+

@@ -13,16 +13,26 @@
 }
 
 .donate a {
+<<<<<<< HEAD
   display: block;
   color: var(--color-text-secondary);
+=======
+  color: var(--color-grey-500);
+>>>>>>> upstream/main
   font-size: var(--size-4);
   margin-block: var(--size-2);
   word-break: break-all;
 }
 
 .donate a:hover,
+<<<<<<< HEAD
 .donate a:active {
   opacity: 0.6;
+=======
+.donate a:active,
+.donate a.active {
+  opacity: 60%;
+>>>>>>> upstream/main
 }
 
 .donate hr {

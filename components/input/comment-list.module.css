@@ -7,7 +7,7 @@
 .comments li {
   text-align: left;
   padding: 0.5rem 0;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgba(32, 33, 36, 1.00);;
 }
 
 .comments p {

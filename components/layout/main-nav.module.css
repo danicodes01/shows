@@ -1,5 +1,6 @@
 .header {
   width: 100%;
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -35,11 +36,55 @@
     padding-inline: 10%;
   }
 
+=======
+  height: 7rem;
+  background-color: rgba(32, 33, 36, 1.00);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 .5rem; /* Changed to a fixed padding */
+}
+  
+>>>>>>> upstream/main
   .header ul {
     gap: var(--size-6);
   }
+<<<<<<< HEAD
 
   .header a {
     font-size: var(--size-4);
   }
 }
+=======
+  
+  .header li {
+    margin: 0 var(--size-3);
+  }
+  
+  .header a {
+    color: var(--color-grey-50);
+    font-size: var(--size-4);
+  }
+  
+  .header a:hover,
+  .header a:active,
+  .header a.active {
+    color: var(--color-grey-200);
+  }
+
+  .nav {
+    text-transform: none;
+  }
+  
+  @media (min-width: 768px) {
+    .header {
+      padding: 0 10%; 
+    }
+  
+  
+    .header a {
+      font-size: var(--size-5);
+    }
+  }
+  
+>>>>>>> upstream/main

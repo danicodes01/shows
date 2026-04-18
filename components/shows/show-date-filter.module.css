@@ -60,9 +60,35 @@
     width: 80%;
     flex-direction: row;
   }
+<<<<<<< HEAD
 
+=======
+  
+  .control {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .control label {
+    font-weight: bold;
+    color: rgba(32, 33, 36, 1.00);
+  }
+  
+>>>>>>> upstream/main
   .control select {
     width: 100%;
+<<<<<<< HEAD
+=======
+    font: inherit;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(32, 33, 36, 1.00);
+    border: 1px solid rgba(32, 33, 36, 1.00);
+    color: ivory;
+    border-radius: 4px;
+>>>>>>> upstream/main
   }
 
   .form button {

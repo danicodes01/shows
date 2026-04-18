@@ -3,7 +3,7 @@
   padding: 1rem 2rem;
   width: 90%;
   max-width: 40rem;
-  background-color: white;
+  color: var(--color-grey-50);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   font-weight: bold;
   font-size: 1.5rem;

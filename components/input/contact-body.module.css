@@ -1,4 +1,5 @@
 .contact {
+<<<<<<< HEAD
   margin-block: var(--size-4);
   margin-inline: auto;
   width: 90%;
@@ -34,3 +35,22 @@
   border-color: var(--color-separator);
   margin-block: var(--size-4);
 }
+=======
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 20rem;
+    text-align: center;
+  }
+  
+  .contact a {
+    color: var(--color-grey-500);
+    font-size: var(--size-4);
+  }
+  
+  .contact a:hover,
+  .contact a:active,
+  .contact a.active {
+    opacity: 60%;
+  }
+  
+>>>>>>> upstream/main

@@ -1,0 +1,66 @@
+.pagination-wrapper-index {
+  position: sticky;
+  bottom: 50px; 
+  background-color: transparent; /* Ensure it stands out */
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  margin-top: -20px; 
+}
+
+.pagination-wrapper-default {
+  position: sticky;
+  bottom: 50px;
+  background-color: transparent;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  margin-top: -4px;
+  margin-bottom: 15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.button svg {
+  width: 26px;
+  height: 26px;
+  fill: black;
+}
+
+.button:hover svg {
+  fill: #555;
+}
+
+.pageNumber {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  color: rgb(239, 239, 239); /* Default color */
+}
+
+.pageNumber:hover {
+  color: #555;
+}
+
+.pageNumber.active {
+  font-weight: bold;
+  color: #555; /* Highlight color for active page */
+  border-bottom: 2px solid #555; /* Optional: add an underline to the active page */
+}

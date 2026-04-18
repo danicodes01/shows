@@ -1,0 +1,70 @@
+
+
+.excerpt {
+  margin: 2rem 0;
+  text-transform: none;
+}
+
+.excerpt ul {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.excerpt li {
+  text-transform: uppercase;
+}
+
+.excerpt h1 {
+  margin: 0.5rem;
+  font-size: 2.3rem;
+  text-transform: uppercase;
+  
+}
+
+.excerpt h2 {
+  margin-bottom: auto;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0.5rem;
+  line-height: .9;
+}
+
+.excerpt h3 {
+  margin: 0.5rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.excerpt a {
+  color: var(--color-neon);
+  letter-spacing: 0.15rem;
+}
+
+.excerpt a:hover,
+.excerpt a:active,
+.excerpt a.active {
+  color: #4c4c4c;
+}
+
+.excerpt p {
+  margin: 0;
+  line-height: 1.3;
+}
+
+.excerpt em,
+.excerpt i {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.excerpt hr {
+  border: dotted var(--color-grey-50) 0.25rem;
+  border-bottom: none;
+  width: 75%;
+  margin: 1rem auto;
+}

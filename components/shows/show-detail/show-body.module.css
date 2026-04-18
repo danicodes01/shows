@@ -1,14 +1,88 @@
+.body {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0;
+}
+
 .body img {
   object-fit: contain;
   width: 100%;
   height: auto;
 }
 
-@media (min-width: 768px) {
-  .body {
-    margin: var(--size-8) 0;
-    flex-direction: row;
-    align-items: flex-end;
+.icon {
+  margin-left: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.genre,
+.date,
+.address,
+.money,
+.time {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  margin-left: -0.625rem;
+  animation: pulsate 1.5s infinite alternate, flicker 1.5s infinite alternate;
+}
+
+.genre svg,
+.date svg,
+.address svg,
+.money svg,
+.time svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-grey-50);
+  
+}
+
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px var(--color-grey-50), 0 0 11px var(--color-grey-50), 0 0 19px var(--color-grey-50), 0 0 40px #ff6ec7,
+      0 0 80px #ff6ec7, 0 0 90px #ff6ec7, 0 0 100px #ff6ec7, 0 0 150px #ff6ec7;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+@keyframes pulsate {
+  100% {
+    text-shadow: 0 0 4px var(--color-grey-50), 0 0 11px var(--color-grey-50), 0 0 19px var(--color-grey-50), 0 0 40px #ff6ec7,
+      0 0 80px #ff6ec7, 0 0 90px #ff6ec7, 0 0 100px #ff6ec7, 0 0 150px #ff6ec7;
   }
 
+  0% {
+    text-shadow: 0 0 2px var(--color-grey-50), 0 0 4px var(--color-grey-50), 0 0 6px var(--color-grey-50), 0 0 10px #ff6ec7,
+      0 0 45px #ff6ec7, 0 0 55px #ff6ec7, 0 0 70px #ff6ec7, 0 0 80px #ff6ec7;
+  }
 }
+
+
+
+

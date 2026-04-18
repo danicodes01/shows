@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .header {
   padding-bottom: var(--size-8);
   border-bottom: 8px solid var(--color-accent);
@@ -29,3 +30,94 @@
     text-align: left;
   }
 }
+=======
+.headerWrapper{
+  margin-top: 1.5rem;
+}
+
+.headerWrapper hr {
+
+  color: var(--color-grey-50);
+  box-shadow: 0 0 7px var(--color-grey-50), 0 0 10px var(--color-grey-50), 0 0 21px var(--color-grey-50), 0 0 42px #ff6ec7,
+    0 0 82px #ff6ec7, 0 0 92px #ff6ec7, 0 0 102px #ff6ec7, 0 0 151px #ff6ec7;
+  height: .02rem;
+  animation: pulsate 1.5s infinite alternate, flicker 1.5s infinite alternate
+}
+
+.header {
+  text-shadow: 0 0 7px var(--color-grey-50), 0 0 10px var(--color-grey-50), 0 0 21px var(--color-grey-50), 0 0 42px #ff6ec7,
+    0 0 82px #ff6ec7, 0 0 92px #ff6ec7, 0 0 102px #ff6ec7, 0 0 151px #ff6ec7;
+    padding-bottom: var(--size-8);
+    margin: var(--size-4) 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    animation: pulsate 1.5s infinite alternate, flicker 1.5s infinite alternate
+  }
+
+  
+  .header h1 {
+    font-size: var(--size-8);
+    color:  var(--color-grey-50);
+    margin: 0 auto;
+    line-height: initial;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .header {
+      margin: var(--size-8) 0;
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  
+    .header h1 {
+      font-size: var(--size-16);
+    }
+  }
+  
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 47%, 49%, 51%, 53%, 75%, 77%, 79%, 81%, 95%, 97%, 100% {
+      text-shadow: none;
+    }
+    20%, 22%, 24%, 48%, 50%, 52%, 54%, 76%, 78%, 80%, 96% {
+      text-shadow:
+        0 0 4px var(--color-grey-50),
+        0 0 11px var(--color-grey-50),
+        0 0 19px var(--color-grey-50),
+        0 0 40px #ff6ec7,
+        0 0 80px #ff6ec7,
+        0 0 90px #ff6ec7,
+        0 0 100px #ff6ec7,
+        0 0 150px #ff6ec7;
+    }
+  }
+  
+  @keyframes pulsate {
+    0%, 100% {
+      text-shadow:
+        0 0 2px var(--color-grey-50),
+        0 0 4px var(--color-grey-50),
+        0 0 6px var(--color-grey-50),
+        0 0 8px #ff6ec7,
+        0 0 16px #ff6ec7,
+        0 0 24px #ff6ec7,
+        0 0 32px #ff6ec7,
+        0 0 40px #ff6ec7;
+    }
+    50% {
+      text-shadow:
+        0 0 3px var(--color-grey-50),
+        0 0 6px var(--color-grey-50),
+        0 0 9px var(--color-grey-50),
+        0 0 12px #ff6ec7,
+        0 0 24px #ff6ec7,
+        0 0 36px #ff6ec7,
+        0 0 48px #ff6ec7,
+        0 0 60px #ff6ec7;
+    }
+  }
+    
+>>>>>>> upstream/main

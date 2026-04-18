@@ -15,3 +15,19 @@
   border-color: var(--color-separator);
   text-decoration: none;
 }
+
+
+
+.link {
+  background-color: transparent;
+  /* border: 1px solid #252525; */
+  /* border-radius: 6px; */
+  color: var(--color-grey-500);
+  font: inherit;
+  cursor: pointer;
+}
+
+.link:hover,
+.link:active {
+  opacity: 60%;
+}
