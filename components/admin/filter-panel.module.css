@@ -1,0 +1,108 @@
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--size-4);
+  padding: var(--size-4);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-separator);
+  border-radius: 8px;
+  min-inline-size: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-3);
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--size-5);
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.clear {
+  padding: var(--size-1) var(--size-3);
+  background-color: transparent;
+  border: 1px solid var(--color-separator);
+  border-radius: 6px;
+  color: var(--color-text-secondary);
+  font-size: var(--size-3);
+}
+
+.clear:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-secondary);
+}
+
+.group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--size-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+}
+
+.label {
+  font-size: var(--size-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+}
+
+.input {
+  font: inherit;
+  font-size: var(--size-4);
+  padding: var(--size-2) var(--size-3);
+  border: 1px solid var(--color-separator);
+  border-radius: 6px;
+  background-color: var(--color-bg-elevated-2);
+  color: var(--color-text);
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--size-2);
+}
+
+.checkList {
+  display: grid;
+  gap: var(--size-2);
+  max-block-size: 12rem;
+  overflow-y: auto;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+  font-size: var(--size-4);
+  color: var(--color-text);
+}
+
+.triRow {
+  display: grid;
+  gap: var(--size-2);
+}
+
+.tri {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--size-2);
+  font-size: var(--size-4);
+  color: var(--color-text);
+}
