@@ -1,57 +1,94 @@
-
 .content {
   width: 95%;
-  max-width: 60rem;
-  margin: var(--size-8) auto;
-  font-size: var(--size-5);
-  line-height: var(--size-8);
+  max-width: 64rem;
+  margin-block: var(--size-8);
+  margin-inline: auto;
   background-color: var(--color-bg-elevated);
-  border-radius: 6px;
-  padding: var(--size-4);
-}
-
-.header {
-  padding-bottom: var(--size-8);
-  border-bottom: 8px solid var(--color-accent);
-  margin-bottom: var(--size-4);
+  border-radius: 12px;
+  padding: var(--size-5);
+  display: grid;
+  gap: var(--size-5);
 }
 
 .header h1 {
-  font-size: var(--size-8);
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  line-height: 1.15;
   color: var(--color-accent);
   margin: 0;
-  line-height: initial;
-  text-align: center;
+  text-align: left;
+}
+
+.body {
+  display: grid;
+  gap: var(--size-5);
 }
 
 .image {
-  margin: var(--size-4) auto;
   width: 100%;
-  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-bg-elevated-2);
 }
 
 .image img {
-  object-fit: contain;
+  display: block;
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 .details {
-  text-align: center;
+  display: grid;
+  gap: var(--size-3);
+  align-content: start;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.details p {
+.details p,
+.details time {
   color: var(--color-text-secondary);
-  margin: var(--size-2) 0;
+  margin: 0;
+}
+
+.details .venue {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.excerpt {
+  color: var(--color-text);
+  white-space: pre-line;
+}
+
+.ticketLink {
+  justify-self: start;
+  padding-block: var(--size-3);
+  padding-inline: var(--size-6);
+  background-color: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-block-start: var(--size-2);
+}
+
+.ticketLink:hover {
+  filter: brightness(1.1);
 }
 
 @media (min-width: 768px) {
   .content {
     padding: var(--size-8);
+    gap: var(--size-6);
   }
 
-  .header h1 {
-    font-size: var(--size-16);
-    text-align: left;
+  .body {
+    grid-template-columns: minmax(0, 22rem) 1fr;
+    gap: var(--size-8);
+    align-items: start;
   }
 }

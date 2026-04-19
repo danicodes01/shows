@@ -13,4 +13,5 @@ export type ScrapedShow = {
   genre: string
   excerpt: string
   image: string
+  ticketUrl?: string
 }

@@ -1,6 +1,6 @@
 import type { ScrapedShow, VenueConfig } from './types'
 
-const INGEST_URL = process.env.INGEST_URL!
+const INGEST_URL = process.env.INGEST_URL ?? 'https://distortnewyork.com/api/shows'
 const INGEST_SECRET = process.env.INGEST_SECRET!
 
 export async function ingestShow(show: ScrapedShow, venue: VenueConfig): Promise<void> {
@@ -24,5 +24,7 @@ export async function ingestShow(show: ScrapedShow, venue: VenueConfig): Promise
 
   if (!res.ok) {
     console.error(`  ✗ Failed to ingest "${show.title}": ${res.status}`)
+  } else {
+    console.log(`  ✓ "${show.title}"`)
   }
 }

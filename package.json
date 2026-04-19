@@ -13,9 +13,11 @@
     "migrate:status": "prisma migrate status",
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
-    "scrape:broadway": "ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts",
-    "scrape:broadway:dev": "INGEST_URL=http://localhost:3000/api/shows ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts",
-    "scrape:broadway:prod": "INGEST_URL=https://distortnewyork.com/api/shows ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts"
+    "scraper:broadway": "ts-node --project scrapers/tsconfig.json scrapers/venues/the-broadway.ts",
+    "scraper:tv-eye": "ts-node --project scrapers/tsconfig.json scrapers/venues/tv-eye.ts",
+    "test:broadway": "ts-node --project scrapers/tsconfig.json scrapers/test-broadway.ts",
+    "test:tv-eye": "ts-node --project scrapers/tsconfig.json scrapers/test-tv-eye.ts",
+    "db:clear": "ts-node --project scrapers/tsconfig.json scripts/db-clear.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
