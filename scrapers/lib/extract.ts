@@ -32,7 +32,7 @@ const EXTRACT_TOOL: Anthropic.Tool = {
             date:   { type: 'string', description: 'ISO 8601, e.g. "2026-05-10T00:00:00.000Z"' },
             time:   { type: 'string', description: 'e.g. "7:00 PM"' },
             price:  { type: 'string', description: 'Use advance price if multiple listed. Always prefix numeric amounts with "$" (e.g. "$15.00"). Use "Free" if $0. Do not output a bare number.' },
-            genre:  { type: 'string', description: 'Infer from DETAILS if not provided, e.g. "punk", "experimental"' },
+            genre:  { type: 'string', description: 'Infer from DETAILS if not provided, e.g. "punk", "experimental". Return an empty string if genre cannot be reasonably inferred. Never output placeholder text like "unknown" or "<UNKNOWN>".' },
             excerpt:   { type: 'string', description: 'Full description from DETAILS, preserving paragraph breaks as \\n\\n. If DETAILS is empty or missing, synthesize ONE short sentence from the other fields (title, genre, time, venue), e.g. "{title} — {genre} at {venue}, doors {time}".' },
           },
           required: ['title', 'slug', 'date', 'time', 'price', 'genre', 'excerpt'],

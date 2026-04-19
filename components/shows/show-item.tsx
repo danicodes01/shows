@@ -4,6 +4,12 @@ import DateIcon from '@/components/ui/date-icon'
 import AddressIcon from '@/components/ui/address-icon'
 import classes from './show-item.module.css'
 
+function isKnownGenre(genre: string | null | undefined): boolean {
+  if (!genre) return false
+  const g = genre.trim().toLowerCase()
+  return g.length > 0 && g !== '<unknown>' && g !== 'unknown' && g !== 'n/a'
+}
+
 export default function ShowItem({ show }: { show: ShowWithVenue }) {
   const readableDate = new Intl.DateTimeFormat('en-US', {
     day: 'numeric',
@@ -28,7 +34,7 @@ export default function ShowItem({ show }: { show: ShowWithVenue }) {
             <AddressIcon />
             <address>{show.venue.name}</address>
           </div>
-          <p>{show.genre}</p>
+          {isKnownGenre(show.genre) && <p>{show.genre}</p>}
         </div>
       </Link>
     </li>
