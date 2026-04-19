@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'Our top picks for shows to see in NY',
 }
 
+export const revalidate = 60
+
 export default async function HomePage() {
   const shows = await getFeaturedShows()
   return (
