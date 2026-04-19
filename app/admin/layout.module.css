@@ -1,0 +1,13 @@
+.admin {
+  min-block-size: 100dvh;
+  padding-inline: var(--size-4);
+  padding-block: var(--size-6);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .admin {
+    padding-inline: var(--size-8);
+  }
+}
