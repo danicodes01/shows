@@ -18,17 +18,24 @@ export async function getFeaturedShows(): Promise<ShowWithVenue[]> {
 
 export const SHOWS_PER_PAGE = 12
 
+function startOfTodayNY(): Date {
+  const nyDate = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' })
+  return new Date(`${nyDate}T00:00:00.000Z`)
+}
+
 export async function getAllShows(
   { page = 1, perPage = SHOWS_PER_PAGE }: { page?: number; perPage?: number } = {},
 ): Promise<{ items: ShowWithVenue[]; total: number }> {
+  const where = { date: { gte: startOfTodayNY() } }
   const [items, total] = await Promise.all([
     prisma.show.findMany({
+      where,
       orderBy: { date: 'asc' },
       skip: (page - 1) * perPage,
       take: perPage,
       include: withVenue,
     }),
-    prisma.show.count(),
+    prisma.show.count({ where }),
   ])
   return { items, total }
 }
