@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json()
-    const { title, slug, date, genre, venueName, venueSlug, time, price, image, excerpt, rating, isFeatured } = body
+    const { title, slug, date, genre, venueName, venueSlug, time, price, image, excerpt, rating, isFeatured, ticketUrl } = body
 
     if (!title?.trim() || !slug?.trim() || !date || !venueName?.trim() || !venueSlug?.trim() || !image?.trim()) {
       return NextResponse.json({ message: 'Invalid show data' }, { status: 422 })
@@ -20,12 +20,13 @@ export async function POST(request: NextRequest) {
 
     await prisma.show.upsert({
       where: { slug },
-      update: { title, date: new Date(date), genre, venueId: venue.id, time, price, image, excerpt: excerpt ?? '', rating: rating ?? 0, isFeatured: isFeatured ?? false },
-      create: { title, slug, date: new Date(date), genre, venueId: venue.id, time, price, image, excerpt: excerpt ?? '', rating: rating ?? 0, isFeatured: isFeatured ?? false },
+      update: { title, date: new Date(date), genre, venueId: venue.id, time, price, image, excerpt: excerpt ?? '', ticketUrl: ticketUrl ?? '', rating: rating ?? 0, isFeatured: isFeatured ?? false },
+      create: { title, slug, date: new Date(date), genre, venueId: venue.id, time, price, image, excerpt: excerpt ?? '', ticketUrl: ticketUrl ?? '', rating: rating ?? 0, isFeatured: isFeatured ?? false },
     })
 
     return NextResponse.json({ message: 'Show upserted' }, { status: 201 })
-  } catch {
-    return NextResponse.json({ message: 'Internal server error' }, { status: 500 })
+  } catch (err) {
+    console.error('[api/shows] error:', err)
+    return NextResponse.json({ message: 'Internal server error', error: String(err) }, { status: 500 })
   }
 }

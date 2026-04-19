@@ -1,12 +1,13 @@
-import 'dotenv/config'
+import './lib/env'
 import { venue as broadway, scrape as scrapeBroadway } from './venues/the-broadway'
+import { venue as tvEye, scrape as scrapeTvEye } from './venues/tv-eye'
 import { extractShows } from './lib/extract'
 import { ingestShow } from './lib/ingest'
 import type { VenueConfig } from './lib/types'
 
 const scrapers: { venue: VenueConfig; scrape: () => Promise<string> }[] = [
   { venue: broadway, scrape: scrapeBroadway },
-  // add new venues here
+  { venue: tvEye, scrape: scrapeTvEye },
 ]
 
 async function run() {

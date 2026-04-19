@@ -35,6 +35,7 @@ model Show {
   price      String
   image      String
   excerpt    String    @default("")
+  ticketUrl  String    @default("")
   rating     Int       @default(0)
   isFeatured Boolean   @default(false)
   createdAt  DateTime  @default(now())

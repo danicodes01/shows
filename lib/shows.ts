@@ -11,17 +11,26 @@ export async function getFeaturedShows(): Promise<ShowWithVenue[]> {
   return prisma.show.findMany({
     where: { isFeatured: true },
     orderBy: { rating: 'asc' },
-    take: 50,
+    take: 8,
     include: withVenue,
   })
 }
 
-export async function getAllShows(): Promise<ShowWithVenue[]> {
-  return prisma.show.findMany({
-    orderBy: { date: 'asc' },
-    take: 500,
-    include: withVenue,
-  })
+export const SHOWS_PER_PAGE = 12
+
+export async function getAllShows(
+  { page = 1, perPage = SHOWS_PER_PAGE }: { page?: number; perPage?: number } = {},
+): Promise<{ items: ShowWithVenue[]; total: number }> {
+  const [items, total] = await Promise.all([
+    prisma.show.findMany({
+      orderBy: { date: 'asc' },
+      skip: (page - 1) * perPage,
+      take: perPage,
+      include: withVenue,
+    }),
+    prisma.show.count(),
+  ])
+  return { items, total }
 }
 
 export async function getShowBySlug(slug: string): Promise<ShowWithVenue | null> {
