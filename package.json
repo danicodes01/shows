@@ -30,6 +30,7 @@
     "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^1.1.1",
     "@vercel/blob": "^2.3.3",
+    "bcryptjs": "^3.0.3",
     "next": "^16.2.4",
     "prisma": "^7.7.0",
     "react": "^19.2.5",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.90.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "25.6.0",
     "dotenv": "^17.4.2",
     "playwright": "^1.59.1",

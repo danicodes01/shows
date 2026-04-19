@@ -9,6 +9,8 @@ import logoClasses from './logo.module.css'
 export default function MainNav() {
   const pathname = usePathname()
 
+  if (pathname?.startsWith('/admin')) return null
+
   return (
     <header className={classes.header}>
       <Link href="/">

@@ -1,0 +1,30 @@
+.wrap {
+  display: grid;
+  gap: var(--size-4);
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: var(--size-8);
+  color: var(--color-text);
+}
+
+.hint {
+  color: var(--color-text-secondary);
+}
+
+.signOut {
+  justify-self: start;
+  padding: var(--size-2) var(--size-4);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-separator);
+  border-radius: 6px;
+  color: var(--color-text);
+  font-size: var(--size-4);
+}
+
+.signOut:hover {
+  background-color: var(--color-bg-elevated-2);
+}
