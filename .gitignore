@@ -46,3 +46,6 @@ node_modules/
 next.config.js
 certificates
 /lib/generated/prisma
+
+# claude code local session state
+.claude/
