@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useTransition } from 'react'
+import { useEffect, useRef, useTransition } from 'react'
 import classes from './category-filter.module.css'
 
 type Option = { value: string; label: string; count: number }
@@ -17,6 +17,16 @@ export default function CategoryFilter({ options, active, totalCount }: Category
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [, startTransition] = useTransition()
+  const rowRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const row = rowRef.current
+    if (!row) return
+    const el = row.querySelector<HTMLButtonElement>('[aria-selected="true"]')
+    if (el) {
+      el.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })
+    }
+  }, [active])
 
   const setCategory = (value: string) => {
     const next = new URLSearchParams(searchParams.toString())
@@ -24,33 +34,40 @@ export default function CategoryFilter({ options, active, totalCount }: Category
     else next.delete('cat')
     const qs = next.toString()
     startTransition(() => {
-      router.push(qs ? `${pathname}?${qs}` : pathname)
+      router.push(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
     })
   }
 
   return (
-    <div className={classes.row} role="tablist" aria-label="Filter resources">
-      <button
-        type="button"
-        role="tab"
-        aria-selected={active === ''}
-        className={active === '' ? classes.pillActive : classes.pill}
-        onClick={() => setCategory('')}
+    <div className={classes.rail}>
+      <div
+        ref={rowRef}
+        className={classes.row}
+        role="tablist"
+        aria-label="Filter resources"
       >
-        All <span className={classes.count}>{totalCount}</span>
-      </button>
-      {options.map((opt) => (
         <button
-          key={opt.value}
           type="button"
           role="tab"
-          aria-selected={active === opt.value}
-          className={active === opt.value ? classes.pillActive : classes.pill}
-          onClick={() => setCategory(opt.value)}
+          aria-selected={active === ''}
+          className={active === '' ? classes.pillActive : classes.pill}
+          onClick={() => setCategory('')}
         >
-          {opt.label} <span className={classes.count}>{opt.count}</span>
+          All <span className={classes.count}>{totalCount}</span>
         </button>
-      ))}
+        {options.map((opt) => (
+          <button
+            key={opt.value}
+            type="button"
+            role="tab"
+            aria-selected={active === opt.value}
+            className={active === opt.value ? classes.pillActive : classes.pill}
+            onClick={() => setCategory(opt.value)}
+          >
+            {opt.label} <span className={classes.count}>{opt.count}</span>
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
