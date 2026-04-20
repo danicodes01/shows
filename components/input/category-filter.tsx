@@ -23,9 +23,9 @@ export default function CategoryFilter({ options, active, totalCount }: Category
     const row = rowRef.current
     if (!row) return
     const el = row.querySelector<HTMLButtonElement>('[aria-selected="true"]')
-    if (el) {
-      el.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })
-    }
+    if (!el) return
+    const left = el.offsetLeft - (row.clientWidth - el.clientWidth) / 2
+    row.scrollTo({ left, behavior: 'smooth' })
   }, [active])
 
   const setCategory = (value: string) => {
