@@ -7,6 +7,7 @@ import { getFeaturedShows } from '@/lib/shows'
 export const metadata: Metadata = {
   title: 'Featured Shows in NY',
   description: 'Our top picks for shows to see in NY',
+  alternates: { canonical: '/' },
 }
 
 export const revalidate = 60

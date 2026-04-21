@@ -14,6 +14,7 @@ import {
 export const metadata: Metadata = {
   title: 'All Shows',
   description: 'Find all shows in NYC and its boroughs',
+  alternates: { canonical: '/shows' },
 }
 
 type Props = {

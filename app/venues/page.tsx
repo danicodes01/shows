@@ -5,6 +5,7 @@ import { getAllVenues } from '@/lib/shows'
 export const metadata: Metadata = {
   title: 'Venues',
   description: 'NYC venues featuring underground shows',
+  alternates: { canonical: '/venues' },
 }
 
 export default async function VenuesPage() {

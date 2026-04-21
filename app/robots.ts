@@ -6,5 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       disallow: '/admin/',
     },
+    sitemap: 'https://distortnewyork.com/sitemap.xml',
   }
 }
