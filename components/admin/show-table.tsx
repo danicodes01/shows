@@ -26,7 +26,6 @@ export default function ShowTable({ items }: Props) {
             <th>Venue</th>
             <th>Date</th>
             <th>Genre</th>
-            <th aria-label="Featured">★</th>
             <th>Rating</th>
             <th>Actions</th>
           </tr>
@@ -47,26 +46,30 @@ export default function ShowTable({ items }: Props) {
                   {show.title}
                 </Link>
               </td>
-              <td className={classes.clamp}>{show.venue.name}</td>
-              <td className={classes.num}>{dateFmt.format(show.date)}</td>
-              <td className={classes.clamp}>{show.genre}</td>
-              <td className={classes.center}>
-                <form action={toggleFeaturedAction}>
-                  <input type="hidden" name="id" value={show.id} />
-                  <input type="hidden" name="next" value={String(!show.isFeatured)} />
-                  <button
-                    type="submit"
-                    className={show.isFeatured ? classes.starOn : classes.starOff}
-                    aria-label={show.isFeatured ? 'Unfeature' : 'Feature'}
-                    title={show.isFeatured ? 'Unfeature' : 'Feature'}
-                  >
-                    {show.isFeatured ? '★' : '☆'}
-                  </button>
-                </form>
+              <td className={classes.clampCell} data-label="Venue">
+                <div className={classes.clamp}>{show.venue.name}</div>
               </td>
-              <td className={classes.num}>{show.rating}</td>
-              <td>
-                <Link href={`/admin/shows/${show.id}`} className={classes.action}>Edit</Link>
+              <td className={classes.num} data-label="Date">{dateFmt.format(show.date)}</td>
+              <td className={`${classes.clampCell} ${classes.mobileHide}`} data-label="Genre">
+                <div className={classes.clamp}>{show.genre}</div>
+              </td>
+              <td className={`${classes.num} ${classes.mobileHide}`}>{show.rating}</td>
+              <td className={classes.actionsCell}>
+                <div className={classes.actions}>
+                  <form action={toggleFeaturedAction}>
+                    <input type="hidden" name="id" value={show.id} />
+                    <input type="hidden" name="next" value={String(!show.isFeatured)} />
+                    <button
+                      type="submit"
+                      className={show.isFeatured ? classes.starOn : classes.starOff}
+                      aria-label={show.isFeatured ? 'Unfeature' : 'Feature'}
+                      title={show.isFeatured ? 'Unfeature' : 'Feature'}
+                    >
+                      {show.isFeatured ? '★' : '☆'}
+                    </button>
+                  </form>
+                  <Link href={`/admin/shows/${show.id}`} className={classes.openBtn}>Edit</Link>
+                </div>
               </td>
             </tr>
           ))}

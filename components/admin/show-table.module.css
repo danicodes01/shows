@@ -207,3 +207,117 @@
   border: 1px solid var(--color-separator);
   border-radius: 8px;
 }
+
+.mobileHide {
+  display: table-cell;
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    overflow-x: visible;
+    border: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  .table,
+  .table tbody {
+    display: block;
+    inline-size: 100%;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: block;
+    padding: var(--size-3);
+    margin-block-end: var(--size-3);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-separator);
+    border-radius: 8px;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-elevated);
+  }
+
+  .table tbody tr:last-child {
+    margin-block-end: 0;
+  }
+
+  .table tbody td {
+    display: block;
+    padding: 0;
+    padding-block-end: var(--size-2);
+    max-inline-size: none;
+  }
+
+  .thumbCell {
+    float: inline-start;
+    inline-size: 64px !important;
+    margin-inline-end: var(--size-3);
+    margin-block-end: var(--size-2);
+    padding: 0 !important;
+  }
+
+  .thumb,
+  .thumbEmpty {
+    inline-size: 64px;
+    block-size: 64px;
+  }
+
+  .title {
+    min-inline-size: 0;
+    max-inline-size: none;
+    font-size: var(--size-5);
+  }
+
+  .titleLink {
+    -webkit-line-clamp: 3;
+  }
+
+  .clampCell,
+  .num,
+  .center {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .clamp {
+    -webkit-line-clamp: 1;
+  }
+
+  .table tbody td[data-label]::before {
+    content: attr(data-label);
+    display: inline-block;
+    min-inline-size: 4rem;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    margin-inline-end: var(--size-2);
+  }
+
+  .mobileHide {
+    display: none;
+  }
+
+  .actionsCell {
+    clear: both;
+    padding-block-start: var(--size-3) !important;
+    margin-block-start: var(--size-2);
+    border-block-start: 1px solid var(--color-separator);
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+
+  .openBtn,
+  .starOn,
+  .starOff {
+    flex: 0 0 auto;
+  }
+}
