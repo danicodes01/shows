@@ -5,6 +5,7 @@
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--size-3);
@@ -13,8 +14,15 @@
 .title {
   margin: 0;
   text-transform: uppercase;
-  font-size: var(--size-8);
+  font-size: var(--size-6);
   color: var(--color-text);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--size-8);
+  }
 }
 
 .count {

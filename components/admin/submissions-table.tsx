@@ -54,16 +54,16 @@ export default function SubmissionsTable({ items, sort }: Props) {
                   {s.title || '(untitled)'}
                 </Link>
               </td>
-              <td className={classes.clampCell}>
+              <td className={classes.clampCell} data-label="Venue">
                 <div className={classes.clamp}>{s.venue || '—'}</div>
               </td>
-              <td className={classes.clampCell}>
+              <td className={classes.clampCell} data-label="Date">
                 <div className={classes.clamp}>{s.date || '—'}</div>
               </td>
-              <td className={classes.clampCell}>
+              <td className={classes.clampCell} data-label="Submitter">
                 <div className={classes.clamp}>{s.email || '—'}</div>
               </td>
-              <td className={classes.num}>{dateFmt.format(s.createdAt)}</td>
+              <td className={`${classes.num} ${classes.mobileHide}`}>{dateFmt.format(s.createdAt)}</td>
               <td className={classes.actionsCell}>
                 <div className={classes.actions}>
                   <Link href={`/admin/submissions/${s.id}`} className={classes.openBtn}>Review</Link>
