@@ -293,17 +293,21 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         />
         <ul className={classes.grid}>
           {filtered.map((r) => (
-            <li key={r.name} className={classes.card}>
-              <span className={classes.category}>{CATEGORY_LABEL[r.category]}</span>
-              <h3 className={classes.cardTitle}>{r.name}</h3>
-              <p className={classes.cardDesc}>{r.description}</p>
+            <li key={r.name}>
               <Link
-                className={classes.cardLink}
+                className={classes.card}
                 href={r.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {r.cta} →
+                <div className={classes.cardBody}>
+                  <span className={classes.category}>{CATEGORY_LABEL[r.category]}</span>
+                  <h3 className={classes.cardTitle}>{r.name}</h3>
+                  <p className={classes.cardDesc}>{r.description}</p>
+                  <span className={classes.cta} aria-hidden="true">
+                    {r.cta} →
+                  </span>
+                </div>
               </Link>
             </li>
           ))}
