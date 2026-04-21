@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:https": "next dev --experimental-https",
-    "build": "prisma generate && (test \"$VERCEL_ENV\" = \"preview\" || prisma migrate deploy) && next build",
+    "build": "prisma generate && node scripts/maybe-migrate.mjs && next build",
     "start": "next start",
     "lint": "next lint",
     "migrate:dev": "prisma migrate dev",
