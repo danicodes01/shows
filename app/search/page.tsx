@@ -6,6 +6,10 @@ import { searchShows } from '@/lib/shows'
 export const metadata: Metadata = {
   title: 'Search Shows',
   description: 'Search for shows in NYC',
+  alternates: { canonical: '/search' },
+  // Query-parameter search pages aren't useful in the index; keep Google
+  // focused on the structured /shows/* and /venues/* pages instead.
+  robots: { index: false, follow: true },
 }
 
 type Props = {

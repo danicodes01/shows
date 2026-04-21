@@ -7,6 +7,7 @@ import classes from './page.module.css'
 export const metadata: Metadata = {
   title: 'DistortNewYork — Info / Submit',
   description: 'Share your thoughts, or promote a show / event',
+  alternates: { canonical: '/contact' },
 }
 
 type Category =
