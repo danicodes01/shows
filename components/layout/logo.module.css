@@ -1,7 +1,13 @@
-.logo {
+.image {
+  display: none;
+  width: 55px;
+  height: auto;
+}
+
+.mask {
   display: block;
   width: 55px;
-  height: 55px;
+  aspect-ratio: 827 / 850;
   background-color: var(--color-text);
   mask-image: url('/images/logo.PNG');
   mask-size: contain;
@@ -14,8 +20,21 @@
 }
 
 @media (min-width: 768px) {
-  .logo {
+  .image {
     width: 75px;
-    height: 75px;
+  }
+
+  .mask {
+    width: 75px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .image {
+    display: block;
+  }
+
+  .mask {
+    display: none;
   }
 }
