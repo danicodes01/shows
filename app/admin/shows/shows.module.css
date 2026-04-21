@@ -23,6 +23,58 @@
   font-variant-numeric: tabular-nums;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+}
+
+.buildLink {
+  padding-block: var(--size-2);
+  padding-inline: var(--size-4);
+  background-color: var(--color-accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.buildLink:hover {
+  filter: brightness(1.1);
+}
+
+.backLink {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.backLink:hover {
+  color: var(--color-text);
+}
+
+.deleteRow {
+  width: 95%;
+  max-width: 52rem;
+  margin-inline: auto;
+  margin-block-end: var(--size-8);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitterNote {
+  width: 95%;
+  max-width: 52rem;
+  margin-inline: auto;
+  margin-block-end: var(--size-4);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .layout {
   display: grid;
   gap: var(--size-4);

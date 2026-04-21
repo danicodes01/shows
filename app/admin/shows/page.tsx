@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getAllVenues, getShowsForAdmin, ADMIN_SHOWS_PER_PAGE } from '@/lib/shows'
 import {
   parseAdminShowsParams,
@@ -37,9 +38,12 @@ export default async function AdminShowsPage({ searchParams }: Props) {
     <section className={classes.page}>
       <header className={classes.header}>
         <h1 className={classes.title}>Shows</h1>
-        <p className={classes.count}>
-          {total.toLocaleString()} result{total === 1 ? '' : 's'}
-        </p>
+        <div className={classes.headerActions}>
+          <p className={classes.count}>
+            {total.toLocaleString()} result{total === 1 ? '' : 's'}
+          </p>
+          <Link href="/admin/shows/new" className={classes.buildLink}>+ Build show</Link>
+        </div>
       </header>
 
       <div className={classes.layout}>

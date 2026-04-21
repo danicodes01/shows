@@ -1,0 +1,162 @@
+.form {
+  display: grid;
+  gap: var(--size-5);
+  width: 95%;
+  max-width: 52rem;
+  margin-block: var(--size-6);
+  margin-inline: auto;
+}
+
+.section {
+  border: 1px solid var(--color-separator);
+  border-radius: 10px;
+  padding: var(--size-5);
+  display: grid;
+  gap: var(--size-4);
+  background-color: var(--color-bg-elevated);
+}
+
+.section legend {
+  padding-inline: var(--size-2);
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.row {
+  display: grid;
+  gap: var(--size-4);
+}
+
+.field,
+.checkField {
+  display: grid;
+  gap: var(--size-2);
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.field > span,
+.checkField > span {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.checkField {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--size-3);
+}
+
+.checkField > span {
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.field input,
+.field textarea,
+.field select {
+  font: inherit;
+  padding-block: var(--size-2);
+  padding-inline: var(--size-3);
+  background-color: var(--color-bg-elevated-2);
+  color: var(--color-text);
+  border: 1px solid var(--color-separator);
+  border-radius: 6px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: 1px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.dropzone,
+.dropzoneActive {
+  display: grid;
+  place-items: center;
+  padding: var(--size-6);
+  border-radius: 8px;
+  border: 2px dashed var(--color-separator);
+  background-color: var(--color-bg-elevated-2);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.dropzone:hover,
+.dropzoneActive {
+  border-color: var(--color-accent);
+  background-color: var(--color-fill);
+  color: var(--color-text);
+}
+
+.preview {
+  display: grid;
+  place-items: center;
+  padding: var(--size-3);
+  background-color: var(--color-bg-elevated-2);
+  border-radius: 8px;
+  border: 1px solid var(--color-separator);
+}
+
+.preview img {
+  max-inline-size: 100%;
+  max-block-size: 20rem;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.error {
+  padding: var(--size-3);
+  border-radius: 8px;
+  background-color: rgba(255, 69, 58, 0.12);
+  color: var(--color-error);
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--size-3);
+}
+
+.submit {
+  padding-block: var(--size-3);
+  padding-inline: var(--size-6);
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover {
+  filter: brightness(1.1);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    align-items: start;
+  }
+}
