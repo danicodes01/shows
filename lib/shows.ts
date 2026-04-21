@@ -30,7 +30,7 @@ export async function getFeaturedShows(): Promise<ShowWithVenue[]> {
   const shows = await prisma.show.findMany({
     where: { isFeatured: true, date: { gte: startOfTodayNY() } },
     orderBy: { date: 'asc' },
-    take: 8,
+    take: 9,
     include: withVenue,
   })
   return declusterByVenue(shows)

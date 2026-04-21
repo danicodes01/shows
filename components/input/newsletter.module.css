@@ -18,24 +18,28 @@
 
 .control input {
   flex: 1;
+  min-inline-size: 0;
   font: inherit;
   padding-block: var(--size-2);
-  padding-inline: var(--size-2);
+  padding-inline: var(--size-3);
   border-radius: 4px;
   border-start-end-radius: 0;
   border-end-end-radius: 0;
-  border: 1px solid var(--color-input-border);
-  background-color: var(--color-input-bg);
-  color: var(--color-input-text);
+  border: 1px solid var(--color-separator);
+  border-inline-end: none;
+  background-color: var(--color-bg-elevated-2);
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .control input::placeholder {
-  color: var(--color-input-placeholder);
+  color: var(--color-text-tertiary);
 }
 
 .control input:focus {
   outline: none;
-  border-color: var(--color-input-border-focus);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(191, 90, 242, 0.2);
 }
 
 .controlDisabled {
@@ -45,22 +49,23 @@
 
 .newsletter button {
   padding-block: var(--size-2);
-  padding-inline: var(--size-3);
-  background-color: var(--color-btn-black);
-  border: 1px solid var(--color-btn-black);
+  padding-inline: var(--size-4);
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
   border-radius: 4px;
   border-start-start-radius: 0;
   border-end-start-radius: 0;
   color: #fff;
   font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
   cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.newsletter button:hover,
-.newsletter button:active {
-  background-color: var(--color-btn-black-hover);
-  border-color: var(--color-btn-black-hover);
-  color: var(--color-btn-black-hover-text);
+.newsletter button:hover:not(:disabled),
+.newsletter button:focus-visible:not(:disabled) {
+  opacity: 0.9;
 }
 
 .newsletter button:disabled {
