@@ -1,4 +1,6 @@
 import type { ShowWithVenue } from '@/lib/shows'
+import { displayValue } from '@/lib/display'
+import PreviewPlayer from './preview-player'
 import classes from './show-content.module.css'
 
 export default function ShowContent({ show }: { show: ShowWithVenue }) {
@@ -22,9 +24,12 @@ export default function ShowContent({ show }: { show: ShowWithVenue }) {
         <div className={classes.details}>
           <p className={classes.venue}>{show.venue.name}</p>
           <time>{readableDate}</time>
-          <p>{show.time}</p>
-          <p>{show.price}</p>
+          <p>{displayValue(show.time)}</p>
+          <p>{displayValue(show.price)}</p>
           {show.excerpt && <p className={classes.excerpt}>{show.excerpt}</p>}
+          {show.previewUrl && (
+            <PreviewPlayer src={show.previewUrl} trackTitle={show.previewTrack} />
+          )}
           {show.ticketUrl && (
             <a
               href={show.ticketUrl}

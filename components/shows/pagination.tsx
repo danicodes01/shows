@@ -8,7 +8,9 @@ type Props = {
 }
 
 function hrefFor(basePath: string, page: number): string {
-  return page === 1 ? basePath : `${basePath}?page=${page}`
+  if (page === 1) return basePath
+  const sep = basePath.includes('?') ? '&' : '?'
+  return `${basePath}${sep}page=${page}`
 }
 
 function pageList(current: number, total: number): (number | 'ellipsis')[] {

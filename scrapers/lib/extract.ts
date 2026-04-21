@@ -1,13 +1,24 @@
 import Anthropic from '@anthropic-ai/sdk'
 import type { ScrapedShow } from './types'
 
-export function parseRawEvents(rawText: string): Map<string, { image: string; ticketUrl: string }> {
-  const map = new Map<string, { image: string; ticketUrl: string }>()
+type ParsedEvent = {
+  image: string
+  ticketUrl: string
+  previewUrl: string
+  previewTrack: string
+  venueName: string
+}
+
+export function parseRawEvents(rawText: string): Map<string, ParsedEvent> {
+  const map = new Map<string, ParsedEvent>()
   for (const e of rawText.split('\n\n---\n\n').filter(Boolean)) {
     const slug = e.match(/^SLUG: (.+)$/m)?.[1]?.trim() ?? ''
     const image = e.match(/^IMAGE: (.+)$/m)?.[1]?.trim() ?? ''
     const ticketUrl = e.match(/^TICKET_URL: (.+)$/m)?.[1]?.trim() ?? ''
-    if (slug) map.set(slug, { image, ticketUrl })
+    const previewUrl = e.match(/^PREVIEW_URL: (.+)$/m)?.[1]?.trim() ?? ''
+    const previewTrack = e.match(/^PREVIEW_TRACK: (.+)$/m)?.[1]?.trim() ?? ''
+    const venueName = e.match(/^VENUE_NAME: (.+)$/m)?.[1]?.trim() ?? ''
+    if (slug) map.set(slug, { image, ticketUrl, previewUrl, previewTrack, venueName })
   }
   return map
 }

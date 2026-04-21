@@ -1,0 +1,217 @@
+.wrap {
+  position: relative;
+  inline-size: 90%;
+  max-inline-size: 40rem;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.menuToggle {
+  flex-shrink: 0;
+  inline-size: 2rem;
+  block-size: 2rem;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.menuToggle:hover {
+  color: var(--color-text);
+}
+
+.menuToggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.menuToggle[aria-expanded="true"] {
+  color: var(--color-accent);
+}
+
+.rail {
+  position: relative;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.menu {
+  position: absolute;
+  inset-block-start: calc(100% + var(--size-2));
+  inset-inline-start: 0;
+  z-index: 10;
+  min-inline-size: 16rem;
+  max-block-size: 22rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-separator);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+
+.menuSearch {
+  margin: var(--size-2);
+  padding-block: var(--size-2);
+  padding-inline: var(--size-3);
+  background-color: var(--color-bg-elevated-2);
+  color: var(--color-text);
+  border: 1px solid var(--color-separator);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.menuSearch::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.menuSearch:focus {
+  outline: 1px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.menuList {
+  list-style: none;
+  margin: 0;
+  padding: var(--size-1);
+  padding-block-start: 0;
+  overflow-y: auto;
+  display: grid;
+  gap: 2px;
+}
+
+.menuEmpty {
+  padding: var(--size-3);
+  color: var(--color-text-tertiary);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.menuItem,
+.menuItemActive {
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-3);
+  padding-block: var(--size-2);
+  padding-inline: var(--size-3);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.875rem;
+  text-align: inline-start;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.menuItem:hover {
+  background: var(--color-fill);
+}
+
+.menuItemActive {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.menuCount {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--size-2);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--size-4);
+  padding-block: var(--size-1);
+  padding-inline: var(--size-6);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  min-inline-size: 0;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+.rail::before,
+.rail::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inline-size: var(--size-6);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rail::before {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.rail::after {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+.pill,
+.pillActive {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-2);
+  padding-block: var(--size-2);
+  padding-inline: var(--size-4);
+  border-radius: 999px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.pill {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-separator);
+}
+
+.pill:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-secondary);
+}
+
+.pillActive {
+  background: var(--color-accent);
+  color: #fff;
+  border: 1px solid var(--color-accent);
+}
+
+.count {
+  font-size: 0.65rem;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.pillActive .count {
+  opacity: 0.85;
+}

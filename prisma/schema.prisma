@@ -36,6 +36,8 @@ model Show {
   image      String
   excerpt    String    @default("")
   ticketUrl  String    @default("")
+  previewUrl   String    @default("")
+  previewTrack String    @default("")
   rating     Int       @default(0)
   isFeatured Boolean   @default(false)
   createdAt  DateTime  @default(now())

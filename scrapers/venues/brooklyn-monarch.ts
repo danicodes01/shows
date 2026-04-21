@@ -33,6 +33,31 @@ function slugify(title: string): string {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 }
 
+// Brooklyn Monarch, The Meadows, and The Wood Shop share the kydlabs platform
+// and all appear on OMR's monarch page. Route each show to its real venue.
+const SISTER_VENUES: Record<string, VenueConfig> = {
+  'brooklyn monarch': {
+    name: 'Brooklyn Monarch',
+    slug: 'brooklyn-monarch',
+    url: 'https://www.thebrooklynmonarch.com/shows',
+  },
+  'the meadows': {
+    name: 'The Meadows',
+    slug: 'the-meadows',
+    url: 'https://www.thebrooklynmonarch.com/shows',
+  },
+  'the wood shop': {
+    name: 'The Wood Shop',
+    slug: 'the-wood-shop',
+    url: 'https://www.thebrooklynmonarch.com/shows',
+  },
+}
+
+function resolveVenue(scrapedName: string): VenueConfig {
+  const key = scrapedName.trim().toLowerCase()
+  return SISTER_VENUES[key] ?? venue
+}
+
 export async function scrape(): Promise<string> {
   const browser = await chromium.launch()
   const context = await browser.newContext({
@@ -87,17 +112,20 @@ export async function scrape(): Promise<string> {
     try {
       await detailPage.goto(card.href, { waitUntil: 'domcontentloaded' })
       await detailPage.waitForSelector('.editor-container', { timeout: 10000 }).catch(() => {})
-      const { description, price } = await detailPage.evaluate(() => {
+      const { description, price, venueName } = await detailPage.evaluate(() => {
         const descEl = document.querySelector('.editor-container.readonly')
         const description = (descEl?.textContent ?? '').replace(/\s+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim()
         const priceTexts = Array.from(document.querySelectorAll('td p, td span'))
           .map((el) => el.textContent?.trim() ?? '')
           .filter((t) => /^\$\d/.test(t))
-        return { description, price: priceTexts[0] ?? '' }
+        // kydlabs links the address to Google Maps; the anchor text is the venue name
+        const mapLink = document.querySelector('a[href*="google.com/maps"]')
+        const venueName = mapLink?.textContent?.trim() ?? ''
+        return { description, price: priceTexts[0] ?? '', venueName }
       })
-      const details = [card.subvenue && `Venue: ${card.subvenue}`, description].filter(Boolean).join('\n\n')
+      const details = [description].filter(Boolean).join('\n\n')
       events.push(
-        `TITLE: ${card.title}\nSLUG: ${card.slug}\nDATE: ${card.date}\nTIME: ${card.time}\nPRICE: ${price}\nGENRE: \nIMAGE: ${card.image}\nTICKET_URL: ${card.href}\nDETAILS:\n${details}`,
+        `TITLE: ${card.title}\nSLUG: ${card.slug}\nDATE: ${card.date}\nTIME: ${card.time}\nPRICE: ${price}\nGENRE: \nIMAGE: ${card.image}\nTICKET_URL: ${card.href}\nVENUE_NAME: ${venueName}\nDETAILS:\n${details}`,
       )
     } catch (err) {
       console.error(`  ✗ Failed detail: "${card.title}":`, err instanceof Error ? err.message : err)
@@ -117,15 +145,18 @@ async function run() {
   const raw = await scrape()
   const bySlug = parseRawEvents(raw)
   const shows = await extractShows(raw, venue.name)
+  const byVenue: Record<string, number> = {}
   for (const show of shows) {
     const scraped = bySlug.get(show.slug)
     if (scraped) {
       show.image = scraped.image
       show.ticketUrl = scraped.ticketUrl
     }
-    await ingestShow(show, venue)
+    const showVenue = scraped?.venueName ? resolveVenue(scraped.venueName) : venue
+    byVenue[showVenue.name] = (byVenue[showVenue.name] ?? 0) + 1
+    await ingestShow(show, showVenue)
   }
-  console.log(`✓ ${shows.length} shows ingested`)
+  console.log(`✓ ${shows.length} shows ingested:`, byVenue)
 }
 
 if (require.main === module) {
