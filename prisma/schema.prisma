@@ -81,3 +81,30 @@ model Contact {
   status    ContactStatus @default(PENDING)
   createdAt DateTime      @default(now())
 }
+
+model ResourceCategory {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  slug      String     @unique
+  sortOrder Int        @default(0)
+  createdAt DateTime   @default(now())
+  resources Resource[]
+
+  @@index([sortOrder])
+}
+
+model Resource {
+  id          String           @id @default(cuid())
+  name        String
+  description String
+  url         String
+  cta         String
+  sortOrder   Int              @default(0)
+  categoryId  String
+  category    ResourceCategory @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@index([categoryId])
+  @@index([sortOrder])
+}

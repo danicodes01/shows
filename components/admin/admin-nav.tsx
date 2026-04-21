@@ -14,6 +14,7 @@ export default async function AdminNav() {
       <div className={classes.links}>
         <Link href="/admin/shows" className={classes.link}>Shows</Link>
         <Link href="/admin/submissions" className={classes.link}>Submissions</Link>
+        <Link href="/admin/resources" className={classes.link}>Resources</Link>
       </div>
     </nav>
   )
