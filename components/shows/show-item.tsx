@@ -20,7 +20,7 @@ export default function ShowItem({ show }: { show: ShowWithVenue }) {
 
   return (
     <li className={classes.post}>
-      <Link href={`/shows/${show.slug}`}>
+      <Link href={`/shows/${show.slug}`} className={classes.card}>
         <div className={classes.image}>
           <img src={show.image} alt={show.title} />
         </div>

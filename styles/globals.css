@@ -10,33 +10,33 @@ body {
 }
 
 :root {
-  /* Apple Dark Mode — Backgrounds */
-  --color-bg: #000000;
-  --color-bg-elevated: #1C1C1E;
-  --color-bg-elevated-2: #2C2C2E;
+  /* Backgrounds — light */
+  --color-bg: #F2F2F7;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-elevated-2: #E5E5EA;
 
-  /* Apple Dark Mode — Text */
-  --color-text: rgba(227, 227, 227, 1);
-  --color-text-secondary: rgba(235, 235, 245, 0.6);
-  --color-text-tertiary: rgba(235, 235, 245, 0.3);
+  /* Text — light */
+  --color-text: #1C1C1E;
+  --color-text-secondary: #5A5A5F;
+  --color-text-tertiary: #8E8E93;
 
-  /* Apple Dark Mode — Accent (systemPurple) */
-  --color-accent: #BF5AF2;
+  /* Accent (darker purple — preserves brand, AA-safe on light bg) */
+  --color-accent: #732392;
 
-  /* Apple Dark Mode — Feedback */
-  --color-success: #30D158;
-  --color-error: #FF453A;
+  /* Feedback — light */
+  --color-success: #248A3D;
+  --color-error: #D70015;
 
-  /* Apple Dark Mode — Structural */
-  --color-separator: #38383A;
-  --color-fill: rgba(120, 120, 128, 0.36);
+  /* Structural — light */
+  --color-separator: #C6C6C8;
+  --color-fill: rgba(118, 118, 128, 0.2);
 
-  /* Form inputs (light surface treatment) */
+  /* Form inputs */
   --color-input-bg: #ffffff;
   --color-input-text: rgba(32, 33, 36, 1);
-  --color-input-border: #cccccc;
-  --color-input-border-focus: #aaaaaa;
-  --color-input-placeholder: #555555;
+  --color-input-border: #D1D1D6;
+  --color-input-border-focus: #8E8E93;
+  --color-input-placeholder: #8E8E93;
 
   /* Dark buttons */
   --color-btn-dark: rgba(32, 33, 36, 1);
@@ -57,6 +57,36 @@ body {
   --size-16: 4rem;
   --size-20: 5rem;
   --size-40: 10rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Apple Dark Mode — Backgrounds */
+    --color-bg: #000000;
+    --color-bg-elevated: #1C1C1E;
+    --color-bg-elevated-2: #2C2C2E;
+
+    /* Apple Dark Mode — Text */
+    --color-text: rgba(227, 227, 227, 1);
+    --color-text-secondary: rgba(235, 235, 245, 0.6);
+    --color-text-tertiary: rgba(235, 235, 245, 0.3);
+
+    /* Apple Dark Mode — Accent (systemPurple) */
+    --color-accent: #BF5AF2;
+
+    /* Apple Dark Mode — Feedback */
+    --color-success: #30D158;
+    --color-error: #FF453A;
+
+    /* Apple Dark Mode — Structural */
+    --color-separator: #38383A;
+    --color-fill: rgba(120, 120, 128, 0.36);
+
+    /* Form inputs (border/placeholder shift for dark contrast; bg stays white) */
+    --color-input-border: #cccccc;
+    --color-input-border-focus: #aaaaaa;
+    --color-input-placeholder: #555555;
+  }
 }
 
 body {

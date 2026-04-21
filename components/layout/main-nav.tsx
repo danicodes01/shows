@@ -13,14 +13,15 @@ export default function MainNav() {
 
   return (
     <header className={classes.header}>
-      <Link href="/">
+      <Link href="/" aria-label="Distort New York — home">
         <Image
           src="/images/logo.PNG"
           alt="Distort New York"
           width={90}
           height={90}
-          className={logoClasses.logo}
+          className={logoClasses.image}
         />
+        <span className={logoClasses.mask} aria-hidden="true" />
       </Link>
       <nav>
         <ul>
