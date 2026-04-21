@@ -30,6 +30,19 @@
   color: var(--color-accent);
 }
 
+.badge {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 1.25rem;
+  padding-inline: 0.4rem;
+  margin-inline-start: 0.5rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
 .signOut {
   justify-self: start;
   padding: var(--size-2) var(--size-4);

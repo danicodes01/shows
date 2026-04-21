@@ -21,6 +21,7 @@ export default function ShowTable({ items }: Props) {
       <table className={classes.table}>
         <thead>
           <tr>
+            <th aria-label="Image"></th>
             <th>Title</th>
             <th>Venue</th>
             <th>Date</th>
@@ -33,12 +34,22 @@ export default function ShowTable({ items }: Props) {
         <tbody>
           {items.map(show => (
             <tr key={show.id}>
-              <td className={classes.title}>
-                <Link href={`/admin/shows/${show.id}`}>{show.title}</Link>
+              <td className={classes.thumbCell}>
+                {show.image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={show.image} alt="" className={classes.thumb} loading="lazy" />
+                ) : (
+                  <div className={classes.thumbEmpty} aria-hidden="true">—</div>
+                )}
               </td>
-              <td>{show.venue.name}</td>
+              <td className={classes.title}>
+                <Link href={`/admin/shows/${show.id}`} className={classes.titleLink}>
+                  {show.title}
+                </Link>
+              </td>
+              <td className={classes.clamp}>{show.venue.name}</td>
               <td className={classes.num}>{dateFmt.format(show.date)}</td>
-              <td>{show.genre}</td>
+              <td className={classes.clamp}>{show.genre}</td>
               <td className={classes.center}>
                 <form action={toggleFeaturedAction}>
                   <input type="hidden" name="id" value={show.id} />
