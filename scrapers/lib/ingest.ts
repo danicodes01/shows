@@ -17,13 +17,16 @@ export async function ingestShow(show: ScrapedShow, venue: VenueConfig): Promise
     },
     body: JSON.stringify({
       ...show,
+      previewUrl: show.previewUrl ?? '',
+      previewTrack: show.previewTrack ?? '',
       venueName: venue.name,
       venueSlug: venue.slug,
     }),
   })
 
   if (!res.ok) {
-    console.error(`  ✗ Failed to ingest "${show.title}": ${res.status}`)
+    const body = await res.text().catch(() => '')
+    console.error(`  ✗ Failed to ingest "${show.title}": ${res.status} — ${body}`)
   } else {
     console.log(`  ✓ "${show.title}"`)
   }

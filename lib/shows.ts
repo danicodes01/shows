@@ -24,9 +24,10 @@ function startOfTodayNY(): Date {
 }
 
 export async function getAllShows(
-  { page = 1, perPage = SHOWS_PER_PAGE }: { page?: number; perPage?: number } = {},
+  { page = 1, perPage = SHOWS_PER_PAGE, venueSlug }: { page?: number; perPage?: number; venueSlug?: string } = {},
 ): Promise<{ items: ShowWithVenue[]; total: number }> {
-  const where = { date: { gte: startOfTodayNY() } }
+  const where: Record<string, unknown> = { date: { gte: startOfTodayNY() } }
+  if (venueSlug) where.venue = { slug: venueSlug }
   const [items, total] = await Promise.all([
     prisma.show.findMany({
       where,
@@ -40,6 +41,20 @@ export async function getAllShows(
   return { items, total }
 }
 
+export async function getUpcomingVenueCounts(): Promise<{ name: string; slug: string; count: number }[]> {
+  const venues = await prisma.venue.findMany({
+    orderBy: { name: 'asc' },
+    include: {
+      _count: {
+        select: { shows: { where: { date: { gte: startOfTodayNY() } } } },
+      },
+    },
+  })
+  return venues
+    .map((v) => ({ name: v.name, slug: v.slug, count: v._count.shows }))
+    .filter((v) => v.count > 0)
+}
+
 export async function getShowBySlug(slug: string): Promise<ShowWithVenue | null> {
   return prisma.show.findFirst({
     where: { slug },
@@ -47,16 +62,18 @@ export async function getShowBySlug(slug: string): Promise<ShowWithVenue | null>
   })
 }
 
-export async function searchShows(query: string): Promise<ShowWithVenue[]> {
+export async function searchShows(query: string, venueSlug?: string): Promise<ShowWithVenue[]> {
+  const match = {
+    OR: [
+      { title: { contains: query, mode: 'insensitive' as const } },
+      { genre: { contains: query, mode: 'insensitive' as const } },
+      { excerpt: { contains: query, mode: 'insensitive' as const } },
+      { venue: { name: { contains: query, mode: 'insensitive' as const } } },
+    ],
+  }
+  const where = venueSlug ? { AND: [match, { venue: { slug: venueSlug } }] } : match
   return prisma.show.findMany({
-    where: {
-      OR: [
-        { title: { contains: query, mode: 'insensitive' } },
-        { genre: { contains: query, mode: 'insensitive' } },
-        { excerpt: { contains: query, mode: 'insensitive' } },
-        { venue: { name: { contains: query, mode: 'insensitive' } } },
-      ],
-    },
+    where,
     orderBy: { date: 'asc' },
     include: withVenue,
   })

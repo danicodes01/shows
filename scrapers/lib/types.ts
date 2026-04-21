@@ -14,4 +14,6 @@ export type ScrapedShow = {
   excerpt: string
   image: string
   ticketUrl?: string
+  previewUrl?: string
+  previewTrack?: string
 }
