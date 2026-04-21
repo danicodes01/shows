@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import classes from './main-nav.module.css'
 import logoClasses from './logo.module.css'
@@ -13,14 +12,8 @@ export default function MainNav() {
 
   return (
     <header className={classes.header}>
-      <Link href="/">
-        <Image
-          src="/images/logo.PNG"
-          alt="Distort New York"
-          width={90}
-          height={90}
-          className={logoClasses.logo}
-        />
+      <Link href="/" aria-label="Distort New York — home">
+        <span className={logoClasses.logo} role="img" aria-label="Distort New York" />
       </Link>
       <nav>
         <ul>

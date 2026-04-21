@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   description: 'Shows in NYC and all boroughs',
 }
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#732392' },
+    { media: '(prefers-color-scheme: dark)', color: '#BF5AF2' },
+  ],
+  colorScheme: 'light dark',
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
