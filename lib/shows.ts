@@ -7,13 +7,33 @@ export type ShowWithVenue = Show & { venue: Venue }
 
 const withVenue = { venue: true } as const
 
+// Break up runs of same-venue shows by swapping a later, different-venue
+// show forward. Preserves most of the date order; just avoids "Gold Sounds,
+// Gold Sounds, Gold Sounds" visual clusters on the homepage.
+function declusterByVenue(items: ShowWithVenue[]): ShowWithVenue[] {
+  const result = [...items]
+  for (let i = 1; i < result.length; i++) {
+    if (result[i].venue.slug !== result[i - 1].venue.slug) continue
+    for (let j = i + 1; j < result.length; j++) {
+      if (result[j].venue.slug !== result[i - 1].venue.slug) {
+        const tmp = result[i]
+        result[i] = result[j]
+        result[j] = tmp
+        break
+      }
+    }
+  }
+  return result
+}
+
 export async function getFeaturedShows(): Promise<ShowWithVenue[]> {
-  return prisma.show.findMany({
-    where: { isFeatured: true },
-    orderBy: { rating: 'asc' },
+  const shows = await prisma.show.findMany({
+    where: { isFeatured: true, date: { gte: startOfTodayNY() } },
+    orderBy: { date: 'asc' },
     take: 8,
     include: withVenue,
   })
+  return declusterByVenue(shows)
 }
 
 export const SHOWS_PER_PAGE = 12
