@@ -17,6 +17,7 @@ export default async function AdminDashboardPage() {
           {submissionCount > 0 && <span className={classes.badge}>{submissionCount}</span>}
         </Link>
         <Link href="/admin/resources" className={classes.navLink}>Resources</Link>
+        <Link href="/admin/newsletter" className={classes.navLink}>Newsletter</Link>
       </nav>
       <form action={logoutAction}>
         <button type="submit" className={classes.signOut}>Sign out</button>

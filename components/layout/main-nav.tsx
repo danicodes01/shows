@@ -26,7 +26,7 @@ export default function MainNav() {
       <nav>
         <ul>
           <li>
-            <Link href="/shows" className={pathname === '/shows' ? classes.active : ''}>Shows</Link>
+            <Link href="/shows" className={pathname === '/shows' ? classes.active : ''}>shows</Link>
           </li>
           <li>
             <Link href="/contact" className={pathname === '/contact' ? classes.active : ''}>info/submit</Link>
