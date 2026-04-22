@@ -119,12 +119,13 @@ export type ShowForPicker = {
   title: string
   date: string
   venueName: string
+  isFeatured: boolean
 }
 
 export async function getUpcomingShowsForPicker(): Promise<ShowForPicker[]> {
   const shows = await prisma.show.findMany({
     where: { date: { gte: startOfTodayNY() } },
-    orderBy: { date: 'asc' },
+    orderBy: [{ isFeatured: 'desc' }, { date: 'asc' }],
     include: withVenue,
     take: 500,
   })
@@ -134,6 +135,7 @@ export async function getUpcomingShowsForPicker(): Promise<ShowForPicker[]> {
     title: s.title,
     date: s.date.toISOString(),
     venueName: s.venue.name,
+    isFeatured: s.isFeatured,
   }))
 }
 
