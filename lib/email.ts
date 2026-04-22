@@ -36,7 +36,7 @@ export async function sendMail({
   attachments?: Attachment[]
 }): Promise<void> {
   const transporter = getTransporter()
-  const from = process.env.GMAIL_USERNAME!
+  const from = process.env.GMAIL_FROM || process.env.GMAIL_USERNAME!
   await transporter.sendMail({
     from: `DistortNewYork <${from}>`,
     to,

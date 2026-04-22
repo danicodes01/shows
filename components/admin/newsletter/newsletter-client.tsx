@@ -303,7 +303,10 @@ export default function NewsletterClient({
                         className={classes.pickerRow}
                         onClick={() => insertShow(s)}
                       >
-                        <span className={classes.pickerTitle}>{s.title}</span>
+                        <span className={classes.pickerTitle}>
+                          {s.title}
+                          {s.isFeatured && <span className={classes.featuredBadge}>Featured</span>}
+                        </span>
                         <span className={classes.pickerMeta}>
                           {s.venueName} · {formatDate(s.date)}
                         </span>
@@ -344,7 +347,7 @@ export default function NewsletterClient({
           <div className={classes.sendRow}>
             <p className={classes.sendInfo}>
               Sending to <strong>{selected.size}</strong> subscriber
-              {selected.size === 1 ? '' : 's'} from contact@distortnewyork.com
+              {selected.size === 1 ? '' : 's'} from newsletter@distortnewyork.com
             </p>
             <button
               type="submit"

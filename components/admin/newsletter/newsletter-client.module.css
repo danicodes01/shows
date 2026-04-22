@@ -233,6 +233,20 @@
 .pickerTitle {
   font-weight: 600;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.featuredBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 1px 6px;
+  border-radius: 3px;
 }
 
 .pickerMeta {
