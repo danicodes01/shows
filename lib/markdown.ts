@@ -9,7 +9,7 @@ function escapeHtml(s: string): string {
 function renderInline(s: string): string {
   let out = escapeHtml(s)
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_m, text, url) => {
-    return `<a href="${url}" style="color:#BF5AF2;text-decoration:underline;font-weight:600;">${text}</a>`
+    return `<a href="${url}" style="color:#BF5AF2;text-decoration:underline;font-weight:500;font-size:0.95em;">${text}</a>`
   })
   out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
   out = out.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
@@ -25,7 +25,7 @@ export function markdownToHtml(md: string): string {
 
   const flushParagraph = () => {
     if (paragraph.length) {
-      blocks.push(`<p style="margin:0 0 16px 0;line-height:1.6;">${renderInline(paragraph.join(' '))}</p>`)
+      blocks.push(`<p style="margin:0 0 16px 0;line-height:1.6;">${paragraph.map(renderInline).join('<br>')}</p>`)
       paragraph = []
     }
   }
@@ -49,7 +49,7 @@ export function markdownToHtml(md: string): string {
       flushParagraph()
       flushList()
       const level = h[1].length
-      const size = level === 1 ? 28 : level === 2 ? 22 : 18
+      const size = level === 1 ? 22 : level === 2 ? 18 : 16
       blocks.push(
         `<h${level} style="margin:24px 0 12px 0;font-size:${size}px;line-height:1.2;">${renderInline(h[2])}</h${level}>`,
       )
@@ -81,8 +81,30 @@ export function markdownToPlainText(md: string): string {
 
 export function wrapEmailHtml(innerHtml: string, unsubscribeUrl?: string): string {
   const unsubscribe = unsubscribeUrl
-    ? `<p style="margin:24px 0 0 0;font-size:12px;color:#8a8a8e;">You're receiving this because you subscribed at distortnewyork.com. <a href="${unsubscribeUrl}" style="color:#8a8a8e;">Unsubscribe</a>.</p>`
+    ? `<p style="margin:16px 0 0 0;font-size:12px;color:#8a8a8e;">You're receiving this because you subscribed at distortnewyork.com. <a href="${unsubscribeUrl}" style="color:#8a8a8e;">Unsubscribe</a>.</p>`
     : ''
+  const signature = `
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:32px;border-top:1px solid #e5e5e7;background-color:#ffffff;">
+      <tr>
+        <td style="padding-top:20px;background-color:#ffffff;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+            <tr>
+              <td style="padding-right:14px;vertical-align:middle;line-height:0;font-size:0;background-color:#ffffff;">
+                <img src="cid:distort-logo" alt="" width="48" style="display:block;max-width:48px;height:auto;border:0;outline:none;" />
+              </td>
+              <td style="vertical-align:middle;color:#111;font-size:14px;line-height:1.5;background-color:#ffffff;">
+                <div style="font-weight:600;color:#111;">Team DistortNewYork</div>
+                <div style="color:#6e6e73;font-size:13px;">
+                  <a href="https://distortnewyork.com" style="color:#6e6e73;text-decoration:none;">distortnewyork.com</a>
+                  &nbsp;·&nbsp;
+                  <a href="https://instagram.com/distortnewyork" style="color:#6e6e73;text-decoration:none;">@distortnewyork</a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>`
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -102,6 +124,7 @@ export function wrapEmailHtml(innerHtml: string, unsubscribeUrl?: string): strin
             </td></tr>
             <tr><td style="color:#111;font-size:16px;line-height:1.6;background-color:#ffffff;">
               ${innerHtml}
+              ${signature}
               ${unsubscribe}
             </td></tr>
           </table>
