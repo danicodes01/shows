@@ -67,6 +67,16 @@ model Newsletter {
   createdAt DateTime @default(now())
 }
 
+model NewsletterSend {
+  id             String   @id @default(cuid())
+  subject        String
+  body           String
+  recipientCount Int
+  sentAt         DateTime @default(now())
+
+  @@index([sentAt])
+}
+
 model Contact {
   id        String        @id @default(cuid())
   email     String        @default("")

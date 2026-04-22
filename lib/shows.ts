@@ -113,6 +113,30 @@ export async function getAllVenues(): Promise<Venue[]> {
   return prisma.venue.findMany({ orderBy: { name: 'asc' } })
 }
 
+export type ShowForPicker = {
+  id: string
+  slug: string
+  title: string
+  date: string
+  venueName: string
+}
+
+export async function getUpcomingShowsForPicker(): Promise<ShowForPicker[]> {
+  const shows = await prisma.show.findMany({
+    where: { date: { gte: startOfTodayNY() } },
+    orderBy: { date: 'asc' },
+    include: withVenue,
+    take: 500,
+  })
+  return shows.map((s) => ({
+    id: s.id,
+    slug: s.slug,
+    title: s.title,
+    date: s.date.toISOString(),
+    venueName: s.venue.name,
+  }))
+}
+
 export async function getVenueBySlug(slug: string) {
   return prisma.venue.findFirst({
     where: { slug },
