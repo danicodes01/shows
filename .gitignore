@@ -43,7 +43,6 @@ node_modules/
 .next/
 .swc/
 .*.env
-next.config.js
 certificates
 /lib/generated/prisma
 
